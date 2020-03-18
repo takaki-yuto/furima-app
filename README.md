@@ -97,6 +97,7 @@
 |expiration_month|integer|null: false|
 |expiration_date|integer|null: false|
 |security_code|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
