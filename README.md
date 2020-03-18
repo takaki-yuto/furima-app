@@ -21,28 +21,24 @@
 |apartment,room_number|string|null: false|
 |phone_number|integer|null: false|
 <!-- 決算方法 -->
-|payment-method_id|integer|null: false|
-|point_id|integer|null: false|
+|payment-method_id|integer|null: false, foreign_key: true|
+|point_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :products
-- has_many :purchases
 - has_many :payment-methods
 - belongs_to :point
-
-
+- has_many :message
 
 
 
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_id|integer|null: false|
 |product-name|string|null: false|
 |category-big|string|null: false|
 |category-midle|string||
 |category-small|string||
 |size|string||
-|brand_id|string||
 <!-- 商品状態 -->
 |product-status|string|null: false|
 |shipping-charges|string|null: false|
@@ -50,27 +46,16 @@
 |delivery-area|string|null: false|
 <!-- 配送予定日 -->
 |estimated-delivery-date|string|null: false|
-|price_id|integer|null: false|
+|buyer|string|null: false|
+|purchase-time|string|null: false|
+|image_id|integer|null: false, foreign_key: true|
+|brand_id|string|null: false, foreign_key: true|
+|price_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :brand
-- belongs_to :image
+- has_many :images
 - belongs_to :price
-- belongs_to :purchase
-
-
-
-
-<!-- 購入テーブル -->
-## purchasesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false|
-|product_id|integer|null: false|
-|buyer|string|null: false|
-### Association
-- belongs_to :user
-- belongs_to :product
 
 
 
@@ -87,7 +72,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|integer|null: false|
-|product_id|string|null: false|
+|product_id|string|null: false, foreign_key: true|
 ### Association
 - has_many :products
 
@@ -118,6 +103,17 @@
 |Column|Type|Options|
 |------|----|-------|
 |point|integer|null: false|
-|user_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text||
+|user_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :product
