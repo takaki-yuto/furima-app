@@ -35,9 +35,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|category_big|string|null: false|
-|category_midle|string||
-|category_small|string||
+|category_id|string|null: false, foreign_key: true|
 |size|string||
 <!-- 商品状態 -->
 |status|string|null: false|
@@ -56,7 +54,7 @@
 - has_many :images
 - belongs_to :price
 - belongs_to :product
-- has_many : categorys
+- belong_to : category
 
 
 
@@ -125,4 +123,4 @@
 |name|string|null: false|
 |ancestory|string||
 ### Association
-- belongs_to :product
+- has_many :products
