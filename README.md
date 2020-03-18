@@ -31,8 +31,9 @@
 <!-- 市区町村 -->
 |municipality|string|null: false|
 |address|integer|null: false|
-|apartment,room_number|string|null: false|
+|apartment|string|null: false|
 |phone_number|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -42,7 +43,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|category_id|string|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |size|string||
 <!-- 商品状態 -->
 |status|string|null: false|
@@ -54,7 +55,8 @@
 |buyer|string|null: false|
 |purchase_time|string|null: false|
 |selling_price|string|null: false|
-|brand_id|string|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :brand
@@ -76,7 +78,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|integer|null: false|
-|product_id|string|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :product
 
