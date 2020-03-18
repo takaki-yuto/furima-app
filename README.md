@@ -98,7 +98,7 @@
 |expiration_date|integer|null: false|
 |security_code|integer|null: false|
 ### Association
-- has_many :users
+- belongs_to :user
 
 
 ## pointsテーブル
