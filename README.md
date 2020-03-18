@@ -52,7 +52,6 @@
 - belongs_to :user
 - belongs_to :brand
 - has_many :images
-- belongs_to :product
 - belongs_to : category
 
 
@@ -72,7 +71,7 @@
 |image|integer|null: false|
 |product_id|string|null: false, foreign_key: true|
 ### Association
-- belongs_to :products
+- belongs_to :product
 
 
 
@@ -116,6 +115,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestory|string||
+|ancestry|string||
 ### Association
 - has_many :products
