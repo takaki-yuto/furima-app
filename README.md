@@ -46,15 +46,14 @@
 |estimated_delivery_date|string|null: false|
 |buyer|string|null: false|
 |purchase_time|string|null: false|
+|selling_price|string|null: false|
 |brand_id|string|null: false, foreign_key: true|
-|price_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :brand
 - has_many :images
-- belongs_to :price
 - belongs_to :product
-- belong_to : category
+- belongs_to : category
 
 
 
@@ -73,16 +72,12 @@
 |image|integer|null: false|
 |product_id|string|null: false, foreign_key: true|
 ### Association
-- has_many :products
+- belongs_to :products
 
 
 
-## pricesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|selling_price|string|null: false|
-### Association
-- has_many :products
+
+
 
 
 
