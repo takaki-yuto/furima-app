@@ -5,14 +5,14 @@
 |------|----|-------|
 |nickname|string|null: false|
 |email|string|null: false|
-|last-name|string|null: false|
+|last_name|string|null: false|
 |name|string|null: false|
 <!-- 苗字　ふりがな -->
-|last-name-rubi|string|null: false|
+|last_name_rubi|string|null: false|
 <!-- 名前　ふりがな -->
-|name-rubi|string|null: false|
+|name_rubi|string|null: false|
 <!-- 郵便番号 -->
-|postal-code|integer|null: false|
+|postal_code|integer|null: false|
 <!-- 都道府県 -->
 |prefectures|string|null: false|
 <!-- 市区町村 -->
@@ -25,30 +25,29 @@
 |point_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :products
-- has_many :payment-methods
+- has_many :payment_methods
 - belongs_to :point
-- has_many :message
+- has_many :messages
 
 
 
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product-name|string|null: false|
-|category-big|string|null: false|
-|category-midle|string||
-|category-small|string||
+|name|string|null: false|
+|category_big|string|null: false|
+|category_midle|string||
+|category_small|string||
 |size|string||
 <!-- 商品状態 -->
-|product-status|string|null: false|
-|shipping-charges|string|null: false|
-|shipping-method|string|null: false|
-|delivery-area|string|null: false|
+|status|string|null: false|
+|shipping_charges|string|null: false|
+|shipping_method|string|null: false|
+|delivery_area|string|null: false|
 <!-- 配送予定日 -->
-|estimated-delivery-date|string|null: false|
+|estimated_delivery_date|string|null: false|
 |buyer|string|null: false|
-|purchase-time|string|null: false|
-|image_id|integer|null: false, foreign_key: true|
+|purchase_time|string|null: false|
 |brand_id|string|null: false, foreign_key: true|
 |price_id|integer|null: false, foreign_key: true|
 ### Association
@@ -56,13 +55,15 @@
 - belongs_to :brand
 - has_many :images
 - belongs_to :price
+- belongs_to :product
+- has_many : categorys
 
 
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand-name|string||
+|name|string|null: false|
 ### Association
 - has_many :products
 
@@ -81,20 +82,20 @@
 ## pricesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|sellingーprice|string|null: false|
+|selling_price|string|null: false|
 ### Association
 - has_many :products
 
 
 
 <!-- 決算方法テーブル -->
-## payment-methodsテーブル
+## payment_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card-number|integer|null: false|
-|expiration-month|integer|null: false|
-|expiration-date|integer|null: false|
-|security-code|integer|null: false|
+|card_number|integer|null: false|
+|expiration_month|integer|null: false|
+|expiration_date|integer|null: false|
+|security_code|integer|null: false|
 ### Association
 - has_many :users
 
@@ -116,4 +117,12 @@
 |product_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+- belongs_to :product
+
+## categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestory|string||
+### Association
 - belongs_to :product
