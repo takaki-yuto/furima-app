@@ -11,6 +11,19 @@
 |last_name_rubi|string|null: false|
 <!-- 名前　ふりがな -->
 |name_rubi|string|null: false|
+<!-- 決算方法 -->
+|payment-method_id|integer|null: false, foreign_key: true|
+|point_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :products
+- has_many :payment_methods
+- belongs_to :point
+- has_many :messages
+- belongs_to :residence
+
+
+
+## residencesテーブル
 <!-- 郵便番号 -->
 |postal_code|integer|null: false|
 <!-- 都道府県 -->
@@ -20,14 +33,8 @@
 |address|integer|null: false|
 |apartment,room_number|string|null: false|
 |phone_number|integer|null: false|
-<!-- 決算方法 -->
-|payment-method_id|integer|null: false, foreign_key: true|
-|point_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many :products
-- has_many :payment_methods
-- belongs_to :point
-- has_many :messages
+- belongs_to :user
 
 
 
