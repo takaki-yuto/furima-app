@@ -2,9 +2,9 @@
 
 
 ## usersテーブル
-## 苗字のふりがな:last_name-rubi
-## 名前のふりがな:name_rubi
-## 決済方法:payment-method_id
+<!-- 苗字のふりがな:last_name-rubi -->
+<!-- 名前のふりがな:name_rubi -->
+<!-- 決済方法:payment-method_id -->
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
@@ -25,9 +25,9 @@
 
 
 ## residencesテーブル
-## 郵便番号:postal_code
-## 都道府県:prefectures
-## 市区町村:municipality
+<!-- 郵便番号:postal_code -->
+<!-- 都道府県:prefectures -->
+<!-- 市区町村:municipality -->
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
@@ -43,8 +43,8 @@
 
 
 ## productsテーブル
-## 商品状態:status
-## 配送予定日:estimated_delivery_date
+<!-- 商品状態:status -->
+<!-- 配送予定日:estimated_delivery_date -->
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -92,7 +92,7 @@
 
 
 
-## 決算方法テーブル
+<!--  決算方法テーブル -->
 ## payment_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
