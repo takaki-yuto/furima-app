@@ -1,0 +1,69 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title furima-app
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = csrf_meta_tags
+  %body
+    %header.header
+      .header__inner
+        .main-header
+          %h1.icon
+            = link_to "furima-logo挿入箇所"
+          .search-box
+            検索フォーム
+        .nav
+          %ul.nav__lists-left
+            %li.list-lefts__item.lists-left__item--first
+              = link_to "カテゴリー", id="cat-btn"
+              = link_to "ブランド", id="brand-btn"
+          %ul.nav__lists-right
+            %li.lists-right__item.lists-right__item--login
+              = link_to "ログイン"
+            %li.lists-right__item.lists-right__item--new
+              = link_to "新規会員登録"
+    = yield
+    .app__banner
+      .inner
+        %h2.inner__title
+          だれでもかんたん、人生を変えるフリマアプリ
+        %p.inner__text
+          今すぐ無料ダウンロード！
+          .inner__icon--app
+            =link_to "app store挿入予定"
+            =link_to "google play挿入予定"
+
+    .footer
+      %ul.contents
+        %li.content
+          %h2.content__head FURIMAについて
+          %ul
+            %li
+              = link_to "会社概要(運営会社)"
+            %li
+              = link_to "プライバシーポリシー"
+            %li
+              = link_to "FURIMA利用規約"
+            %li
+              = link_to "ポイントに関する特約"
+        %li.content
+          %h2.content__head FURIMAを見る
+          %ul
+            %li
+              = link_to "カテゴリー一覧"
+            %li
+              = link_to "ブランド一覧"
+        %li.content
+          %h2.content__head ヘルプ＆ガイド
+          %ul
+            %li
+              = link_to "FURIMAガイド"
+            %li
+              = link_to "FURIMAロゴ利用ガイドライン"
+            %li
+              = link_to "お知らせ"
+      .footer__logo
+        = link_to "footer-logo挿入予定"
+      %p © FURIMA
