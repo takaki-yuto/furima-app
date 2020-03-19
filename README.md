@@ -1,17 +1,18 @@
 # README　DB設計
 
+
 ## usersテーブル
+## 苗字のふりがな:last_name-rubi
+## 名前のふりがな:name_rubi
+## 決済方法:payment-method_id
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
 |email|string|null: false|
 |last_name|string|null: false|
 |name|string|null: false|
-<!-- 苗字　ふりがな -->
 |last_name_rubi|string|null: false|
-<!-- 名前　ふりがな -->
 |name_rubi|string|null: false|
-<!-- 決算方法 -->
 |payment-method_id|integer|null: false, foreign_key: true|
 |point_id|integer|null: false, foreign_key: true|
 ### Association
@@ -24,11 +25,13 @@
 
 
 ## residencesテーブル
-<!-- 郵便番号 -->
+## 郵便番号:postal_code
+## 都道府県:prefectures
+## 市区町村:municipality
+|Column|Type|Options|
+|------|----|-------|
 |postal_code|integer|null: false|
-<!-- 都道府県 -->
 |prefectures|string|null: false|
-<!-- 市区町村 -->
 |municipality|string|null: false|
 |address|integer|null: false|
 |apartment|string|null: false|
@@ -40,17 +43,17 @@
 
 
 ## productsテーブル
+## 商品状態:status
+## 配送予定日:estimated_delivery_date
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |category_id|integer|null: false, foreign_key: true|
 |size|string||
-<!-- 商品状態 -->
 |status|string|null: false|
 |shipping_charges|string|null: false|
 |shipping_method|string|null: false|
 |delivery_area|string|null: false|
-<!-- 配送予定日 -->
 |estimated_delivery_date|string|null: false|
 |buyer|string|null: false|
 |purchase_time|string|null: false|
@@ -89,7 +92,7 @@
 
 
 
-<!-- 決算方法テーブル -->
+## 決算方法テーブル
 ## payment_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
