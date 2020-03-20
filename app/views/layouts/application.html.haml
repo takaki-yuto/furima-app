@@ -11,9 +11,14 @@
       .header__inner
         .main-header
           %h1.icon
-            = link_to "furima-logo挿入箇所"
-          .search-box
-            検索フォーム
+            =link_to "#" do
+              = image_tag "logo/logo.png"
+          .search__box
+            = form_for "#" do |f|
+              .search__box__input
+                = f.text_field :text, placeholder: "キーワードから探す" 
+              = f.button :image, class: '.search-box__icon' do
+                = image_tag ("icon/icon-search 1.png")
         .nav
           %ul.nav__lists-left
             %li.list-lefts__item.lists-left__item--first
@@ -31,10 +36,11 @@
           だれでもかんたん、人生を変えるフリマアプリ
         %p.inner__text
           今すぐ無料ダウンロード！
-          .inner__icon--app
-            =link_to "app store挿入予定"
-            =link_to "google play挿入予定"
-
+          .inner__icon
+            =link_to "#" do
+              = image_tag "icon/app-store-icon (1).png",class: "inner__icon__abtn"
+            =link_to "#" do
+              = image_tag "icon/unnamed.png" , class: "inner__icon__bbtn"
     .footer
       %ul.contents
         %li.content
@@ -65,5 +71,6 @@
             %li
               = link_to "お知らせ"
       .footer__logo
-        = link_to "footer-logo挿入予定"
+        =link_to "#" do
+          = image_tag "logo/logo-white.png"
       %p © FURIMA
