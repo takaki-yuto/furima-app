@@ -1,0 +1,32 @@
+.header-contener
+  =link_to "#" do
+    = image_tag "logo/logo.png"
+= form_for "#", html: { class: "form-body" } do |f|
+  .field-contener
+    .registration ログイン
+    .registration-form
+      .form-box
+        .form-group
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field"
+        .form-group
+          = f.label :password
+          %br/
+          = f.password_field :password, autocomplete: "current-password", class: "text-field"
+        //- if devise_mapping.rememberable?
+        //.field
+        //= f.check_box :remember_me
+        //= f.label :remember_me
+        .actions
+          = f.submit "ログイン", class: "next-btn"
+        .new-user-actions
+          アカウントをお持ちでない方はこちらから
+          = f.submit "新規会員登録", class: "new-user-btn"
+//= render "users/shared/links"
+
+
+
+
+
+

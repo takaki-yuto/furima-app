@@ -1,0 +1,221 @@
+.header-contener {
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 40px 0;
+  img {
+    width: 160px;
+    height: 40px;
+  }
+}
+ /* 進捗バー */
+.Group {
+  margin-left: 80px;
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+}
+.Group-Bar {
+  position: absolute;
+  top: 12px;
+  left: 5%;
+  width: 85%;
+  height: 2px;
+  background-color: #ccc;/*バーの色*/
+  z-index: -1;
+  margin-left: 13px;
+}
+@media screen and (min-width: 768px) {
+  .Group-Bar {
+    top: 21px;
+  }
+}
+.Shapeborder.isActive {
+  border: 1px solid #E2264D;
+}
+.Circle {
+  border-radius: 50%;
+}
+.Group-Item {
+  color: #B7B7B7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Group-Item.isActive {
+  color: #E2264D;
+}
+.Group-Item-CircleInner {
+  width: 16px;
+  height: 16px;
+  background-color: #B7B7B7;
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .Group-Item-CircleInner {
+    width: 12px;
+    height: 12px;
+  }
+}
+.Group-Item-CircleInner.isActive {
+  background: #E2264D;
+}
+.Group-Item-CircleInner:last-of-type::after {
+  content: none;
+}
+.Group-Item-Text {
+  font-size: 10px;
+  font-weight: bold;
+}
+/* 会員情報入力 */
+.form-body {
+  background-color: #F5F5F5;
+  .field-contener{
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    .registration {
+      text-align: center;
+      padding: 32px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .registration-form {
+      padding: 0 40px 60px;
+      margin-bottom: 80px;
+      .top-link {
+        margin: 0 auto;
+        max-width: 300px;
+        line-height: 48px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+        background-color: red;
+        .link-text {
+          color: white;
+          text-decoration: none;
+        }
+      }
+      .form-box {
+        margin: 0 auto;
+        max-width: 300px;
+        .form-group {
+          margin-bottom: 25px;
+          label {
+            font-weight: bold;
+            text-align: left;
+          }
+          .text-field {
+            margin-top: 5px;
+            width: 100%;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .text-field-left {
+            margin-top: 5px;
+            width: 40%;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .text-field-right {
+            margin-top: 5px;
+            margin-left: 10px;
+            width: 40%;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .Required-box {
+            vertical-align: top;
+            display: inline-block;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 12px;
+            width: 33px;
+            color: white;
+            background: #ea352d;
+          }
+          .Any-box {
+            vertical-align: top;
+            display: inline-block;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 12px;
+            width: 33px;
+            color: white;
+            background: #ccc;
+          }
+          #birth_date_birth_date_1i {
+            margin-top: 5px;
+            height: 48px;
+            border: 1px solid #ccc;
+            background-color: white;
+          }
+          #birth_date_birth_date_2i {
+            margin-top: 5px;
+            height: 48px;
+            border: 1px solid #ccc;
+            background-color: white;
+          }
+          #birth_date_birth_date_3i {
+            margin-top: 5px;
+            height: 48px;
+            border: 1px solid #ccc;
+            background-color: white;
+          }
+        }
+        .actions{
+          height: 40px;
+          .next-btn {
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            background-color: red;
+            color: #fff;
+          }
+        }
+        .new-user-actions{
+          text-align: center;
+          margin-top: 40px;
+          height: 60px;
+          font-size: 14px;
+          .new-user-btn {
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #0099e8;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
