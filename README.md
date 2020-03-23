@@ -1,4 +1,4 @@
-# README　DB設計
+# README DB設計
 
 
 ## usersテーブル
@@ -13,14 +13,15 @@
 |name|string|null: false|
 |last_name_rubi|string|null: false|
 |name_rubi|string|null: false|
-|payment-method_id|integer|null: false, foreign_key: true|
-|point_id|integer|null: false, foreign_key: true|
+|birth_date|date|null: false|
+
+
 ### Association
 - has_many :products
 - has_many :payment_methods
-- belongs_to :point
+- has_one :point
 - has_many :messages
-- belongs_to :residence
+- has_one :residence
 
 
 
@@ -30,12 +31,16 @@
 <!-- 市区町村:municipality -->
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer|null: false|
+|destination_last_name|string|null: false|
+|destination_name|string|null: false|
+|destination_last_name_rubi|string|null: false|
+|destination_name_rubi|string|null: false|
+|postal_code|string|null: false, numericality: true|
 |prefectures|string|null: false|
 |municipality|string|null: false|
-|address|integer|null: false|
+|address|string|null: false|
 |apartment|string|null: false|
-|phone_number|integer|null: false|
+|phone_number|string|numericality: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
