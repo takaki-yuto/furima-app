@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   root "products#index"
-
+  resources :products, only: [:show]
   devise_scope :user do
     get "residences", :to => "users/registrations#new_residence"
     post "residences", :to => "users/registrations#create_residence"
