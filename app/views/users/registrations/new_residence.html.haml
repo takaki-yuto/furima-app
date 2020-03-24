@@ -1,0 +1,40 @@
+%h2 送付先住所の登録
+= form_with model: @residence, local: true do |f|
+  = render "devise/shared/error_messages", resource: @residence
+  .field
+    = f.label "送付先氏名（全角）"
+    %br/
+    = f.text_field :destination_last_name, autofocus: true, autocomplete: "name"
+    = f.text_field :destination_name, autofocus: true, autocomplete: "name"
+  .field
+    = f.label "送付先氏名かな（全角）"
+    %br/
+    = f.text_field :destination_last_name_rubi, autofocus: true, autocomplete: "name"
+    = f.text_field :destination_name_rubi, autofocus: true, autocomplete: "name"
+
+  .field
+    = f.label "郵便番号(ハイフンなし)"
+    %br/
+    = f.text_field :postal_code, autofocus: true
+  .field
+    = f.label "都道府県"
+    %br/
+    = f.text_field :prefectures, autofocus: true
+  .field
+    = f.label "市区町村"
+    %br/
+    = f.text_field :municipality, autofocus: true
+  .field
+    = f.label "番地"
+    %br/
+    = f.text_field :address, autofocus: true
+  .field
+    = f.label "アパート・マンション名、その他"
+    %br/
+    = f.text_field :apartment, autofocus: true
+  .field
+    = f.label "電話番号(ハイフンなし)"
+    %br/
+    = f.text_field :phone_number, autofocus: true, autocomplete: "tel"
+  .actions
+    = f.submit "登録"
