@@ -53,7 +53,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|category_id|integer|null: false, foreign_key: true|
 |size|string||
 |status|string|null: false|
 |shipping_charges|string|null: false|
@@ -65,6 +64,8 @@
 |selling_price|string|null: false|
 |brand_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
 - belongs_to :brand
