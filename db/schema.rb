@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_072210) do
+ActiveRecord::Schema.define(version: 2020_03_24_073657) do
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "size"
+    t.string "status", null: false
+    t.string "shipping_charges", null: false
+    t.string "shipping_method", null: false
+    t.string "delivery_area", null: false
+    t.string "estimated_delivery_date", null: false
+    t.string "buyer", null: false
+    t.string "purchase_time", null: false
+    t.string "selling_price", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "residences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "destination_last_name", null: false
@@ -47,5 +64,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_072210) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "users"
   add_foreign_key "residences", "users"
 end
