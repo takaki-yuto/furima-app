@@ -1,0 +1,20 @@
+.header-contener
+  =link_to "#" do
+    = image_tag "logo/logo.png"
+  .Group
+    .Group-Bar
+    .Group-Item
+      %p.Group-Item-Text 会員情報
+      .Group-Item-CircleInner.Circle.Shapeborder
+    .Group-Item
+      %p.Group-Item-Text 住所入力
+      .Group-Item-CircleInner.Circle.Shapeborder
+    .Group-Item.isActive
+      %p.Group-Item-Text 完了
+      .Group-Item-CircleInner.Circle.Shapeborder.isActive
+.form-body
+  .field-contener
+    .registration 登録が完了しました
+    .registration-form
+      .top-link
+        = link_to("トップページに戻る", "#", {class: "link-text"})
