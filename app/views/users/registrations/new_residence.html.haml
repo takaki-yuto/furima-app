@@ -1,40 +1,64 @@
-%h2 送付先住所の登録
-= form_with model: @residence, local: true do |f|
+.header-contener
+  =link_to root_path do
+    = image_tag "logo/logo.png"
+  .Group
+    .Group-Bar
+    .Group-Item
+      %p.Group-Item-Text 会員情報
+      .Group-Item-CircleInner.Circle.Shapeborder
+    .Group-Item.isActive
+      %p.Group-Item-Text 住所入力
+      .Group-Item-CircleInner.Circle.Shapeborder.isActive
+    .Group-Item
+      %p.Group-Item-Text 完了
+      .Group-Item-CircleInner.Circle.Shapeborder
+= form_with model: @residence, class: "form-body", local: true do |f|
   = render "devise/shared/error_messages", resource: @residence
-  .field
-    = f.label "送付先氏名（全角）"
-    %br/
-    = f.text_field :destination_last_name, autofocus: true, autocomplete: "name"
-    = f.text_field :destination_name, autofocus: true, autocomplete: "name"
-  .field
-    = f.label "送付先氏名かな（全角）"
-    %br/
-    = f.text_field :destination_last_name_rubi, autofocus: true, autocomplete: "name"
-    = f.text_field :destination_name_rubi, autofocus: true, autocomplete: "name"
-
-  .field
-    = f.label "郵便番号(ハイフンなし)"
-    %br/
-    = f.text_field :postal_code, autofocus: true
-  .field
-    = f.label "都道府県"
-    %br/
-    = f.text_field :prefectures, autofocus: true
-  .field
-    = f.label "市区町村"
-    %br/
-    = f.text_field :municipality, autofocus: true
-  .field
-    = f.label "番地"
-    %br/
-    = f.text_field :address, autofocus: true
-  .field
-    = f.label "アパート・マンション名、その他"
-    %br/
-    = f.text_field :apartment, autofocus: true
-  .field
-    = f.label "電話番号(ハイフンなし)"
-    %br/
-    = f.text_field :phone_number, autofocus: true, autocomplete: "tel"
-  .actions
-    = f.submit "登録"
+  .field-contener
+    .registration 住所入力
+    .registration-form
+      .form-box
+        .form-group  
+          = f.label "送付先氏名（全角）"
+          .Required-box 必須
+          %br/
+          = f.text_field :destination_last_name, autofocus: true, autocomplete: "name", class: "text-field-left", placeholder: "例)山田"
+          = f.text_field :destination_name, autofocus: true, autocomplete: "name", class: "text-field-right", placeholder: "例)彩"
+        .form-group
+          = f.label "送付先氏名かな（全角）"
+          .Required-box 必須
+          %br/
+          = f.text_field :destination_last_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-left", placeholder: "例)ヤマダ"
+          = f.text_field :destination_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-right", placeholder: "例)アヤ"
+        .form-group
+          = f.label "郵便番号(ハイフンなし)"
+          .Required-box 必須
+          %br/
+          = f.text_field :postal_code, autofocus: true, class: "text-field", placeholder: "例)123-4567"
+        .form-group
+          = f.label "都道府県"
+          .Required-box 必須
+          %br/
+          = f.text_field :prefectures, autofocus: true, class: "text-field", placeholder: "例)東京都"
+        .form-group
+          = f.label "市区町村"
+          .Required-box 必須
+          %br/
+          = f.text_field :municipality, autofocus: true, class: "text-field", placeholder: "例)横浜市緑区"
+        .form-group
+          = f.label "番地"
+          .Required-box 必須
+          %br/
+          = f.text_field :address, autofocus: true, class: "text-field", placeholder: "例)青山1-1-1"
+        .form-group
+          = f.label "アパート・マンション名、その他"
+          .Any-box 任意
+          %br/
+          = f.text_field :apartment, autofocus: true, class: "text-field", placeholder: "例)柳ビル103"
+        .form-group
+          = f.label "電話番号(ハイフンなし)"
+          .Any-box 任意
+          %br/
+          = f.text_field :phone_number, autofocus: true, autocomplete: "tel", class: "text-field", placeholder: "例)09012345678"
+        .actions
+          = f.submit "登録", class: "next-btn"
