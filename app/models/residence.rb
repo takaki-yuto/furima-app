@@ -10,5 +10,10 @@ class Residence < ApplicationRecord
   validates :address, presence: true
 
   validates :postal_code,   length: { is: 7 } ,     numericality: true, format: {with: /\A\d{7}\z/ }, presence: true
-  validates :phone_number,  length: { in: 10..11 }, numericality: true, format: {with: /\A\d{10,11}\z/ }
+ 
+  validates :phone_number,  length: { in: 10..11 }, numericality: true, format: {with: /\A\d{10,11}\z/ }, unless: :phone_number_blank
+
+  def phone_number_blank
+    phone_number.blank?
+  end
 end
