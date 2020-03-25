@@ -1,0 +1,181 @@
+.header-contener {
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 40px 0;
+  img {
+    width: 160px;
+    height: 40px;
+  }
+}
+
+
+.form-body {
+  background-color: #F5F5F5;
+  .field-contener{
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    .registration {
+      text-align: center;
+      padding: 32px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    
+  }
+}
+.registration__item{
+  padding: 32px 16px;
+  border-top: 1px solid #f5f4f4;
+  border-bottom: 1px solid #f5f4f4;
+  .registration__inner{
+    max-width:343px;
+    margin: 0 auto;
+    .buy-item-box{
+      display: flex;
+      .buy-item__image{
+        height: 80px;
+        width: 80px;
+        min-width: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 80px;
+        }
+      }
+      .buy-item__detail{
+        margin-left: 16px;
+        .buy-item__name{
+          font-size: 14px;
+          margin: 0;
+          padding: 0 0 8px;
+          line-height: 1.5;
+          text-align: left;
+        }
+        .buy-price{
+          margin: 0;
+          text-align: left;
+          font-size: 15px;
+          .item__shipping-fee{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.registration__content{
+  padding: 32px 16px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #f5f4f4;
+  .buy-content__inner{
+    max-width: 343px;
+    margin: 0 auto;
+    .buy-price-table:first-child {
+      margin: 0;
+      .buy-price-row:first-child {
+        border: 0;
+        .buy-price-cell:first-child {
+          text-align: left;
+      }
+      }
+    }
+    .buy-price-table {
+      display: table;
+      border-collapse: collapse;
+      width: 100%;
+      .buy-price__row {
+        font-size: 30px;
+        .buy-price__pay {
+          font-size: 18px;
+          display: table-cell;
+          padding: 0;
+          text-align: right;
+          padding-right: 150px;
+        }
+        .buy-price__price{
+          display: table-cell;
+          padding: 0;
+          text-align: right;
+        }
+      .bold{
+       font-weight: 600px;
+       margin: 24px 0 32px;
+      }
+      }
+    }
+    .buy-point{
+      color: #888;
+      margin: 24px 0 32px;
+      li{
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+    }
+    .buy-content__inner{
+      padding: 32px 0;
+      border-top: 1px solid #f5f4f4;
+      h3{
+        margin: 0;
+        font-size: 14px;
+      }
+      a{
+        color: #0099e8;
+        text-decoration: none;
+        p{
+          line-height: 1.5;
+        }
+        .buy-info_text{
+          text-align: left;
+          margin: 8px 0 0;
+          font-size: 14px;
+          line-height: 1.4;
+          i{
+            display: inline-block;
+            speak: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            
+          }
+          .buy-register-text{
+            margin: 0 0 0 4px
+          }
+        }
+      }
+    }
+
+  .bold{
+    font-weight: 600;
+  }
+  }
+}
+
+.registration-form {
+  padding: 0 40px 60px;
+  margin-bottom: 80px;
+  .top-link {
+    margin: 30px auto;
+    max-width: 300px;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    background-color: red;
+    .link-text {
+      color: white;
+      text-decoration: none;
+    }
+    .link-text:disabled {
+      border: 1px solid #888;
+      background: #888;
+      color: #fff;
+    }
+  }
+}
