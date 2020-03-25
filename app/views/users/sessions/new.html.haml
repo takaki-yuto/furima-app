@@ -1,7 +1,7 @@
 .header-contener
-  =link_to "#" do
+  =link_to root_path do
     = image_tag "logo/logo.png"
-= form_for "#", html: { class: "form-body" } do |f|
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-body" }) do |f|
   .field-contener
     .registration ログイン
     .registration-form
@@ -14,12 +14,8 @@
           = f.label :password
           %br/
           = f.password_field :password, autocomplete: "current-password", class: "text-field"
-        //- if devise_mapping.rememberable?
-        //.field
-        //= f.check_box :remember_me
-        //= f.label :remember_me
         .actions
           = f.submit "ログイン", class: "next-btn"
         .new-user-actions
           アカウントをお持ちでない方はこちらから
-          %a{ href: "#", class:'new-user-btn' } 新規登録
+          %a{ href: new_user_registration_path, class:'new-user-btn' } 新規登録
