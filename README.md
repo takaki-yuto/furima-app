@@ -17,11 +17,13 @@
 
 
 ### Association
+
 - has_many :products, dependent: :destroy
 - has_many :payment_methods, dependent: :destroy
 - has_one :point, dependent: :destroy
 - has_many :messages, dependent: :destroy
 - has_one :residence, dependent: :destroy
+
 
 
 
@@ -53,33 +55,38 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|text|string|null: false|
 |size|string||
-|status|string|null: false|
+|products_status|string|null: false|
 |shipping_charges|string|null: false|
 |shipping_method|string|null: false|
 |delivery_area|string|null: false|
 |estimated_delivery_date|string|null: false|
-|buyer|string|null: false|
-|purchase_time|string|null: false|
+|bland_name|string||
 |selling_price|string|null: false|
-|brand_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|purchase_status|string|null: false, default: "出品中­"|
+|seller_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 
 ### Association
+
 - belongs_to :user
 - belongs_to :brand
 - has_many :images, dependent: :destroy
+
 - belongs_to : category
+- has_one :purchasement
+- belongs_to :buyer, class_name: "User",  through: :purchasement
 
-
-
-## brandsテーブル
+## purchasementsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|buyer_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
+
 ### Association
-- has_many :products
+- belongs_to :product
+- belongs_to :buyer, class_name: "User"
 
 
 
