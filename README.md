@@ -17,11 +17,11 @@
 
 
 ### Association
-- has_many :products
-- has_many :payment_methods
-- has_one :point
-- has_many :messages
-- has_one :residence
+- has_many :products, dependent: :destroy
+- has_many :payment_methods, dependent: :destroy
+- has_one :point, dependent: :destroy
+- has_many :messages, dependent: :destroy
+- has_one :residence, dependent: :destroy
 
 
 
@@ -69,7 +69,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :brand
-- has_many :images
+- has_many :images, dependent: :destroy
 - belongs_to : category
 
 
@@ -86,7 +86,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|integer|null: false|
+|image|string|null: false|
 |product_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :product

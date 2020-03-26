@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one :residence
-  has_many :products
+  has_one :residence, dependent: :destroy
+  has_many :products, dependent: :destroy
 
   validates :nickname, :birth_date,           presence: true
   validates :last_name, :name,                presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}

@@ -1,5 +1,5 @@
 class Residence < ApplicationRecord
-  belongs_to :user, dependent: :destroy, optional: true
+  belongs_to :user, optional: true
   
   validates :destination_last_name, :destination_name, :prefectures, :municipality,
             numericality: false, format: {with: /\A[ぁ-んァ-ン一-龥]/}, presence: true
