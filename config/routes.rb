@@ -8,12 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'logout'
-    end
-    collection do
       get 'credit'
     end
   end
-  
+
   devise_scope :user do
     get "residences", :to => "users/registrations#new_residence"
     post "residences", :to => "users/registrations#create_residence"
