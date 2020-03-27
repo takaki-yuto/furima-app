@@ -19,6 +19,8 @@
         - if current_user && user_signed_in?
           %li.lists-right__item.lists-right__item--logout
             = link_to "ログアウト", logout_path
+          %li.lists-right__item.lists-right__item--show
+            = link_to "マイページ", "/users/show";
         - else  
           %li.lists-right__item.lists-right__item--login
             = link_to "ログイン", login_path
