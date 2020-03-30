@@ -1,0 +1,15 @@
+= render 'layouts/header'
+= render 'users/navigation'
+= render 'users/mypage'
+.right_contents
+  .credit
+    .credit_title
+      支払い方法
+    .credit_area
+      .credit_box
+        .credit_tag
+          %button.credit_btn{:type => "submit"} <b>クレジットカードを追加する</b>
+    .credit_area_bottom
+      = link_to "#" do
+        支払い方法について  >
+= render 'layouts/footer'
