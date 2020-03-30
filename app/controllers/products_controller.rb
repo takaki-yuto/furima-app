@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @Products = Product.all.order("created_at DESC").where(purchase_status: "出品中­")
+    @products = Product.includes(:images).order("created_at DESC")
   end
 
   def show
