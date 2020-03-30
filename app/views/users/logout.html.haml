@@ -1,0 +1,11 @@
+= render 'layouts/header'
+= render 'users/navigation'
+= render 'users/mypage'
+.right_contents
+  .logout
+    .logout_area
+      .logout_box
+        .logout_tag
+          .logout_btn
+            = link_to "ログアウト", logout_path
+= render 'layouts/footer'

@@ -13,7 +13,6 @@
       %p.Group-Item-Text 完了
       .Group-Item-CircleInner.Circle.Shapeborder
 = form_with model: @residence, class: "form-body", local: true do |f|
-  = render "devise/shared/error_messages", resource: @residence
   .field-contener
     .registration 住所入力
     .registration-form
@@ -23,42 +22,62 @@
           .Required-box 必須
           %br/
           = f.text_field :destination_last_name, autofocus: true, autocomplete: "name", class: "text-field-left", placeholder: "例)山田"
+          .error_message
+            = @residence.errors.full_messages_for(:destination_last_name)[0]
           = f.text_field :destination_name, autofocus: true, autocomplete: "name", class: "text-field-right", placeholder: "例)彩"
+          .error_message
+            = @residence.errors.full_messages_for(:destination_name)[0]
         .form-group
           = f.label "送付先氏名かな（全角）"
           .Required-box 必須
           %br/
-          = f.text_field :destination_last_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-left", placeholder: "例)ヤマダ"
-          = f.text_field :destination_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-right", placeholder: "例)アヤ"
+          = f.text_field :destination_last_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-left", placeholder: "例)やまだ"
+          .error_message
+            = @residence.errors.full_messages_for(:destination_last_name_rubi)[0]
+          = f.text_field :destination_name_rubi, autofocus: true, autocomplete: "name", class: "text-field-right", placeholder: "例)あや"        
         .form-group
+          .error_message
+            = @residence.errors.full_messages_for(:destination_name_rubi)[0]
           = f.label "郵便番号(ハイフンなし)"
           .Required-box 必須
           %br/
           = f.text_field :postal_code, autofocus: true, class: "text-field", placeholder: "例)123-4567"
+          .error_message
+            = @residence.errors.full_messages_for(:postal_code)[0]        
         .form-group
           = f.label "都道府県"
           .Required-box 必須
           %br/
           = f.text_field :prefectures, autofocus: true, class: "text-field", placeholder: "例)東京都"
+          .error_message
+            = @residence.errors.full_messages_for(:prefectures)[0]        
         .form-group
           = f.label "市区町村"
           .Required-box 必須
           %br/
           = f.text_field :municipality, autofocus: true, class: "text-field", placeholder: "例)横浜市緑区"
+          .error_message
+            = @residence.errors.full_messages_for(:municipality)[0]        
         .form-group
           = f.label "番地"
           .Required-box 必須
           %br/
           = f.text_field :address, autofocus: true, class: "text-field", placeholder: "例)青山1-1-1"
+          .error_message
+            = @residence.errors.full_messages_for(:address)[0]        
         .form-group
           = f.label "アパート・マンション名、その他"
           .Any-box 任意
           %br/
           = f.text_field :apartment, autofocus: true, class: "text-field", placeholder: "例)柳ビル103"
+          .error_message
+            = @residence.errors.full_messages_for(:apartment)[0]        
         .form-group
           = f.label "電話番号(ハイフンなし)"
           .Any-box 任意
           %br/
           = f.text_field :phone_number, autofocus: true, autocomplete: "tel", class: "text-field", placeholder: "例)09012345678"
+          .error_message
+            = @residence.errors.full_messages_for(:phone_number)[0]        
         .actions
           = f.submit "登録", class: "next-btn"

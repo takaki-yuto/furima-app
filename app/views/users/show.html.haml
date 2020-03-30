@@ -1,0 +1,40 @@
+= render 'layouts/header'
+= render 'users/navigation'
+= render 'users/mypage'
+.right_contents
+  .right_content
+    .right_box
+      .right_menu
+        .right_tab
+          .purchase
+            <b>購入した商品</b>
+          .tab_wrap
+            %input#tab1{:checked => "checked", :name => "tab_btn", :type => "radio"}/
+            %input#tab2{:name => "tab_btn", :type => "radio"}/
+            .tab_area
+              %label.tab1_label{:for => "tab1"} 購入中
+              %label.tab2_label{:for => "tab2"} 過去の取引
+            .panel_area
+              #panel1.tab_panel
+                %p 取引中の商品はありません。
+              #panel2.tab_panel
+                %p 過去に取引した商品はありません。
+        .right_tab
+          .purchase
+            <b>出品した商品</b>
+          .tab_wrap
+            %input#tab3{:checked => "checked", :name => "tab_btn", :type => "radio"}/
+            %input#tab4{:name => "tab_btn", :type => "radio"}/
+            %input#tab5{:name => "tab_btn", :type => "radio"}/
+            .tab_are
+              %label.tab3_label{:for => "tab3"} 出品中
+              %label.tab4_label{:for => "tab4"} 取引中
+              %label.tab5_label{:for => "tab5"} 売却済み
+            .panel_are
+              #panel3.tab_panel
+                %p 出品中の商品はありません。
+              #panel4.tab_panel
+                %p 現在出品中の商品はありません。
+              #panel5.tab_panel
+                %p 過去に出品した商品はありません。
+= render 'layouts/footer'

@@ -95,54 +95,27 @@
       .product-head
         新規投稿商品
       .product-lists
-        .product-list
-          = link_to "products/1" do
-            .product-list__img
-              =image_tag  "post_date/sakana.png"
-            .productList--body
-              .productList--body__name
-                product3
-              .productList--body__details
-                %ul
-                  %li 
-                    30000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
-        .product-list
-          %a
-            .product-list__img
-              =image_tag "post_date/oniku.png"
-            .productList--body
-              .productList--body__name
-                product2
-              .productList--body__details
-                %ul
-                  %li 
-                    20000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
-        .product-list
-          %a
-            .product-list__img
-              =image_tag "post_date/care-.png"
-            .productList--body
-              .productList--body__name
-                product1
-              .productList--body__details
-                %ul
-                  %li 
-                    10000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
+        - @products.each do |product|
+          .product-list
+            = link_to "/products/show" do
+              .product-list__img
+                =image_tag "#{product.images[0].image}"
+                -if product.purchase_status != "出品中­"
+                  .purchase_status__sold
+                    =image_tag "icon/sold-stamp-3.png"
+              .productList--body
+                .productList--body__name
+                  = product.name
+                .productList--body__details
+                  %ul
+                    %li 
+                      = product.selling_price
+                    %li
+                      %i.fa.fa-star.icon
+                      %before
+                        0
+                  %p 
+                    (税込)
   .pickup-container
     %head 
       ピックアップブランド
@@ -150,54 +123,27 @@
       .product-head
         アーカイバ
       .product-lists
-        .product-list
-          %a
-            .product-list__img
-              =image_tag "post_date/sakana.png"
-            .productList--body
-              .productList--body__name
-                product3
-              .productList--body__details
-                %ul
-                  %li 
-                    30000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
-        .product-list
-          %a
-            .product-list__img
-              =image_tag "post_date/oniku.png"
-            .productList--body
-              .productList--body__name
-                product2
-              .productList--body__details
-                %ul
-                  %li 
-                    20000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
-        .product-list
-          %a
-            .product-list__img
-              =image_tag "post_date/care-.png"
-            .productList--body
-              .productList--body__name
-                product1
-              .productList--body__details
-                %ul
-                  %li 
-                    10000円
-                  %li
-                    %i.fa.fa-star.icon
-                    %before
-                      0
-                %p (税込)
+        - @products.each do |product|
+          .product-list
+            = link_to "/products/show" do
+              .product-list__img
+                =image_tag "#{product.images[0].image}"
+                -if product.purchase_status != "出品中­"
+                  .purchase_status__sold
+                    =image_tag "icon/sold-stamp-3.png"
+              .productList--body
+                .productList--body__name
+                  = product.name
+                .productList--body__details
+                  %ul
+                    %li 
+                      = product.selling_price
+                    %li
+                      %i.fa.fa-star.icon
+                      %before
+                        0
+                  %p 
+                    (税込)
 = link_to new_product_path do
   .purchaseBtn
     .purchaseBtn__text

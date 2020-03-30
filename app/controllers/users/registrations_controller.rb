@@ -67,12 +67,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def customization_sign_up_params
-    birth_date_params = Date.new(params[:birth_date]["birth_date(1i)"]&.to_i, params[:birth_date]["birth_date(2i)"]&.to_i, params[:birth_date]["birth_date(3i)"]&.to_i)
-    sign_up_params.merge(birth_date: birth_date_params)
+    date = params[:birth_date]
+    if date["birth_date(1i)"].empty? or date["birth_date(2i)"].empty? or date["birth_date(3i)"].empty?
+      sign_up_params.merge(birth_date: nil)
+    else
+      birth_date_params = Date.new(date["birth_date(1i)"]&.to_i, date["birth_date(2i)"]&.to_i, date["birth_date(3i)"]&.to_i)
+      sign_up_params.merge(birth_date: birth_date_params)
+    end
   end
-
   def residence_params
-    params.require(:residence).permit(:destination_last_name, :destination_name, :destination_last_name_rubi, :destination_name_rubi, :postal_code, :prefectures, :municipality, :address, :apartment, :phone_number)
+    params.require(:residence).permit(:destination_last_name, :destination_name, :destination_last_name_rubi, 
+      :destination_name_rubi, :postal_code, :prefectures, 
+      :municipality, :address, :apartment, :phone_number)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
