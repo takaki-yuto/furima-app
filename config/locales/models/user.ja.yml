@@ -1,0 +1,16 @@
+
+
+ja:
+  activerecord:
+    models:
+      user: ユーザー新規登録
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        last_name: お名前(苗字)
+        name: お名前(名)
+        last_name_rubi: お名前かな(苗字)
+        name_rubi: お名前かな(名)
+        birth_date: 生年月日
