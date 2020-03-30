@@ -1,0 +1,255 @@
+.menu{
+  position: relative;
+  width: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  .navigation{
+    position: relative;
+    border-top: 1px solid #eee;
+    background: #f5f5f5;
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    background: #fff;
+    z-index: 1;
+    .navigation_menu{
+      width: 1020px;
+      overflow: visible;
+      margin: 0 auto;
+      padding: 16px 0;
+      white-space: normal;
+      .item_scope{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 1.2;
+        margin-right: 5px;
+      }
+      .next{
+        font-weight: 600;
+        display: inline-block;
+        font-family: 'icon-font';
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
+  }
+}
+.left_var{
+  float: left;
+  .mypage{
+    position: absolute;
+    display: block;
+    .left_content{
+      padding-top: 40px;
+      width: 460px;
+      padding-left: 220px;
+      .mypage_nav{
+        border-style: solid;
+        border-width: 0;
+        font-size: inherit;
+        line-height: inherit;
+        .mypage_nav_list{
+          min-height: 48px;
+          padding-bottom: 1px;
+          background: #ddd;
+          font-size: 14px;
+          color: #333;
+          .mypage-nav-list-item{
+            text-decoration: none;
+            min-height: 48px;
+            padding: 10px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+            a{
+              text-decoration: none;
+              color: #000000;
+            }
+            .icon-arrow-right{
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              color: #ccc;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+              -webkit-transition: all ease-out .2s;
+              transition: all ease-out .2s;
+            }
+          }
+        }
+      }
+      .point{
+        padding-top: 30px;
+        margin-bottom: 8px;
+      }
+      .configuration{
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}
+
+.right_contents{
+  height: 1100px;
+  .right_content{
+    display: flex;
+    .right_box{
+      padding-top: 40px;
+      width: 100%;
+      min-height: 150%;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      padding-right: 180px;
+      .right_menu{
+        float: right;
+        width: 700px;
+        .right_tab{
+          display: block;
+          background-color: #ffffff;
+          border-style: solid;
+          border-width: 0;
+          .purchase{
+            padding: 0 16px;
+            background: #fafafa;
+            background-color: rgb(255, 255, 255);
+            font-size: 16px;
+            line-height: 72px;
+          }
+          .tab_wrap{
+          margin:0 auto;
+            input[type="radio"]{
+            display:none;
+            }
+          }
+          .tab_area{
+            font-size:0; margin:0;
+          }
+          .tab_area label{
+              width:350px;
+              margin:0;
+              display:inline-block;
+              padding:20px 0;
+              color:#999;
+              background:#ddd;
+              text-align:center;
+              font-size:13px;
+              cursor:pointer;
+              transition:ease 0.2s opacity;
+          }
+          .tab_area label:hover{
+              opacity:0.5;
+          }
+          .panel_area{
+            height:250px;
+            background:
+              #ffffff;
+            margin-bottom: 60px;
+          }
+          .tab_panel{
+              width:100%; 
+              padding:80px 0; 
+              display:none;
+          }
+          .tab_panel p{
+              font-size:14px; 
+              letter-spacing:1px; 
+              text-align:center;
+          }
+          #tab1:checked ~ .tab_area .tab1_label{
+              background: #ffffff; color:#000000;
+          }
+          #tab1:checked ~ .panel_area #panel1{
+              display:block;
+          }
+          #tab2:checked ~ .tab_area .tab2_label{
+              background:#fff; color:#000;
+          }
+          #tab2:checked ~ .panel_area #panel2{
+              display:block;
+          }
+        }
+        .right_tab{
+          display: block;
+          background-color: #ffffff;
+          border-style: solid;
+          border-width: 0;
+          .purchase{
+            padding: 0 16px;
+            background: #fafafa;
+            background-color: #ddd;
+            font-size: 16px;
+            line-height: 72px;
+          }
+        } 
+        .tab_wrap{
+          margin:0 auto;
+          width: 100%;
+        }
+        input[type="radio"]{
+                display:none;
+        }
+        .tab_are{
+          font-size:0; margin:0;
+        }
+        .tab_are label{
+            width:33.3333%;
+            margin:0;
+            display:inline-block;
+            padding:20px 0;
+            color:#999;
+            background:#ddd;
+            text-align:center;
+            font-size:13px;
+            cursor:pointer;
+            transition:ease 0.2s opacity;
+        }
+        .tab_are label:hover{
+            opacity:0.5;
+        }
+        .panel_are{
+          height:250px;
+          background:
+            #ffffff;
+          margin-bottom: 60px;
+        }
+        .tab_panel{
+          width:100%; 
+          padding:80px 0; 
+          display:none;
+        }
+        .tab_panel p{
+          font-size:14px; 
+          letter-spacing:1px; 
+          text-align:center;
+        }
+        #tab3:checked ~ .tab_are .tab3_label{
+          background: white; color:#000;
+        }
+        #tab3:checked ~ .panel_are #panel3{
+          display:block;
+        }
+        #tab4:checked ~ .tab_are .tab4_label{
+          background:#fff; color:#000;
+        }
+        #tab4:checked ~ .panel_are #panel4{
+          display:block;
+        }
+        #tab5:checked ~ .tab_are .tab5_label{
+          background:#fff; color:#000;
+        }
+        #tab5:checked ~ .panel_are #panel5{
+          display:block;
+        }
+      }
+    }
+  }
+}
