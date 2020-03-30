@@ -391,31 +391,22 @@ a{
           }
           &__body{
             margin:16px 0 0;
-            ul{
-              position: relative;
-              li{
-                display: flex;
-                flex-direction: column;
-                margin: 0 auto;
-                img{
-                  object-fit:cover;
-                  height:346px;
-                }
-              }
+            display: flex;
+            flex-direction: column;
+            #main-image{
+              object-fit:cover;
+              height:346px;
             }
             .img__plural{
-              ul{
-                display:flex;
-                justify-content: center;
-                margin-top: 10px;
-                li{
-                  width: 25%;
-                  margin: 0 10px 0 0;
-                  img{
-                    object-fit:cover;
-                    height:150px;
-                  }
-                }
+              display:flex;
+              width: 10%;
+              .sub-image{
+                object-fit:cover;
+                height:50px;
+                opacity: 0.5;
+              }
+              .active {
+                opacity: 1;
               }
             }
           }
@@ -523,6 +514,38 @@ a{
               .optional-btn:hover {
                 opacity: 0.6;
               }
+            }
+          }
+          .buy-btn-contener {
+            margin-top: 20px;
+            text-align: center;
+            .buy-btn {
+              line-height: 48px;
+              background: #FF0000;
+              border: 1px solid #FF0000;
+              color: #fff;
+              width: 60%;
+              font-size: 18px;
+              border-radius: 100px;
+            }
+            .delete-btn {
+              margin-right: 30px;
+              line-height: 48px;
+              background: #FF0000;
+              border: 1px solid #FF0000;
+              color: #fff;
+              width: 30%;
+              font-size: 18px;
+              border-radius: 100px;
+            }
+            .edit-btn {
+              line-height: 48px;
+              background: #3CCACE;
+              border: 1px solid #3CCACE;
+              color: #fff;
+              width: 30%;
+              font-size: 18px;
+              border-radius: 100px;
             }
           }
         }
