@@ -519,33 +519,36 @@ a{
           .buy-btn-contener {
             margin-top: 20px;
             text-align: center;
-            .buy-btn {
-              line-height: 48px;
-              background: #FF0000;
-              border: 1px solid #FF0000;
-              color: #fff;
-              width: 60%;
-              font-size: 18px;
-              border-radius: 100px;
-            }
-            .delete-btn {
-              margin-right: 30px;
-              line-height: 48px;
-              background: #FF0000;
-              border: 1px solid #FF0000;
-              color: #fff;
-              width: 30%;
-              font-size: 18px;
-              border-radius: 100px;
-            }
-            .edit-btn {
-              line-height: 48px;
-              background: #3CCACE;
-              border: 1px solid #3CCACE;
-              color: #fff;
-              width: 30%;
-              font-size: 18px;
-              border-radius: 100px;
+            .no-underline{
+              text-decoration: none;
+              .buy-btn {
+                line-height: 48px;
+                background: #FF0000;
+                border: 1px solid #FF0000;
+                color: #fff;
+                width: 60%;
+                font-size: 18px;
+                border-radius: 100px;
+              }
+              .delete-btn {
+                margin-right: 30px;
+                line-height: 48px;
+                background: #FF0000;
+                border: 1px solid #FF0000;
+                color: #fff;
+                width: 30%;
+                font-size: 18px;
+                border-radius: 100px;
+              }
+              .edit-btn {
+                line-height: 48px;
+                background: #3CCACE;
+                border: 1px solid #3CCACE;
+                color: #fff;
+                width: 30%;
+                font-size: 18px;
+                border-radius: 100px;
+              }
             }
           }
         }
