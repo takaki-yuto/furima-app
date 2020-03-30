@@ -232,14 +232,14 @@
         color: #3CCACE;
       }
       .product-lists{
-        width: 780px;
+        width: 950px;
         margin: 26px auto;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
         .product-list{
-          width: 220px;
           display: inline-block;
-          float: left;
+          margin-bottom: 15px;
           a{
             text-decoration: none;
             background-color: #fff;
