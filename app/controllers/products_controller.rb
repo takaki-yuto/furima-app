@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @images = Image.where(product_id: @product.id)
+    @images = @product.images
   end
 
   def new
