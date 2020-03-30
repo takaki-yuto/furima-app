@@ -97,7 +97,7 @@
       .product-lists
         - @products.each do |product|
           .product-list
-            = link_to "/products/show" do
+            = link_to "/products/#{product.id}" do
               .product-list__img
                 =image_tag "#{product.images[0].image}"
                 -if product.purchase_status != "出品中­"
@@ -125,7 +125,7 @@
       .product-lists
         - @products.each do |product|
           .product-list
-            = link_to "/products/show" do
+            = link_to "/products/#{product.id}" do
               .product-list__img
                 =image_tag "#{product.images[0].image}"
                 -if product.purchase_status != "出品中­"
