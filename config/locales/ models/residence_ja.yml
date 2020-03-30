@@ -1,0 +1,16 @@
+ja:
+  activerecord:    
+    models:
+      residence: 送付先住所
+    attributes:
+      residence:
+        destination_last_name: 送付先氏名(苗字)
+        destination_name: 送付先氏名(名)
+        destination_last_name_rubi: 送付先氏名かな(苗字)
+        destination_name_rubi: 送付先氏名かな(名)
+        postal_code: 郵便番号
+        prefectures: 都道府県
+        municipality: 市区町村
+        address: 番地
+        apartment: アパート・マンション名、その他
+        phone_number: 電話番号
