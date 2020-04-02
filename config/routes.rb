@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   root "products#index"
-  resources :products, only: [:show,:new]
+  resources :products
   resources :users, only: [:show] do
     collection do
       get 'logout'
