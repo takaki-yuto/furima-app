@@ -1,0 +1,21 @@
+.product-list
+  = link_to "/products/show" do
+    - product.images.each do |i|
+      .product-list__img
+        = image_tag i.image.url
+    .productList--body
+      .productList--body__name
+        = product.name
+      .productList--body__details
+        %ul
+          %li 
+            = product.selling_price
+            円
+          %li
+            %i.fa.fa-star.icon
+            %before
+              0
+        %p (税込)
+        = link_to '編集', edit_product_path(product)
+        %br/
+        = link_to '削除', product_path(product), method: :delete
