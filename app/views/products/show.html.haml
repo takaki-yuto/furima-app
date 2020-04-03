@@ -117,7 +117,7 @@
                   購入する
           - elsif current_user && user_signed_in?
             .buy-btn-contener
-              = link_to "#",class:"no-underline" do
+              = link_to product_path(@product.id), method: :delete,class:"no-underline" do
                 %button.delete-btn{type: "submit"}
                   削除する
               = link_to "#",class:"no-underline" do
