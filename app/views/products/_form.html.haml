@@ -1,4 +1,4 @@
-= form_with model: product,class:"product_form", local: true do |f|
+= form_with model: product, class:"product_form", local: true do |f|
   .product_out
     .product_box
       .product_box__img
@@ -16,11 +16,15 @@
                   = image_tag image.image.url, data: { index: i }, width: "117.5", height: '118'
                   .js-remove 削除
             = f.fields_for :images do |image|
-              .picture_preview.still_saved_picuture
-              %label.img_upload_container.still_saved_uploader
+              - if product.persisted?
+                .hidden_destroy
+                  = image.check_box :_destroy, {data: {index: image.index}}
+              .picture_preview.not_saved_picture
+              
+              %label.img_upload_container.default_uploader
                 - if product.persisted?
-                  .js-file_group{data: {index: product.images.count}}
-                    = file_field_tag :image, name: "@product[images_attributes][#{product.images.count}][image]", class: "js-file" 
+                  .js-file_group{ data: { index: image.index } }
+                    = file_field_tag :image, name: "@product[images_attributes][#{image.index}][image]", class: "js-file" 
                     %i.fas.fa-camera.product_icon
                     = image.file_field :image, class: "js-file"
                     %br/
@@ -33,9 +37,6 @@
                     %br/
                     .boxsize__message
                       クリックしてファイルをアップロード
-              - if product.persisted?
-                .hidden-destroy
-                  = image.check_box :_destroy, {data: {index: image.index}}
         .error_message
           = product.errors.full_messages_for(:images)[0]
   .product_name
@@ -83,8 +84,6 @@
               %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
               %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
               %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-            %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-              %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
 
         .categories
           .categories_box
@@ -103,8 +102,6 @@
               %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
               %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
               %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-            %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-              %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
 
         .categories
           .categories_box
@@ -123,15 +120,14 @@
               %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
               %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
               %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-            %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-              %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+
         .state
           %b サイズ
           .required
             %b 必須
         .size
           .sizes_box
-            = f.collection_select :size_id, Size.all, :id, :name, :prompt => "選択してください"
+            = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください"
         .error_message
           = product.errors.full_messages_for(:size_id)[0]
         .brand
@@ -148,7 +144,7 @@
             %b 必須
         .status
           .status_box
-            = f.collection_select :products_status_id, ProductsStatus.all, :id, :name, :prompt => "選択してください"
+            = f.collection_select :products_status_id, ProductsStatus.all, :id, :name, prompt: "選択してください"
         .error_message
           = product.errors.full_messages_for(:products_status_id)[0]
 
@@ -163,7 +159,7 @@
               %b 必須
           .delivery_charge
             .delivery_charge__box
-              = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, :prompt => "選択してください"
+              = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, prompt: "選択してください"
           .error_message
             = product.errors.full_messages_for(:shipping_charges_id)[0]
 
@@ -174,7 +170,7 @@
                 %b 必須
             .delivery_method
               .delivery_method__box
-                = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, :prompt => "選択してください"
+                = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, prompt: "選択してください"
             .error_message
               = product.errors.full_messages_for(:shipping_method_id)[0]
 
@@ -184,7 +180,7 @@
               %b 必須
           .delivery_areas
             .delivery_areas__box
-              = f.collection_select :delivery_area_id, DeliveryArea.all, :id, :name, :prompt => "選択してください"
+              = f.collection_select :delivery_area_id, DeliveryArea.all, :id, :name, prompt: "選択してください"
           .error_message
             = product.errors.full_messages_for(:delivery_area_id)[0]
          
@@ -194,7 +190,7 @@
               %b 必須
           .delivery_date
             .delivery_date__box
-              = f.collection_select :estimated_delivery_date_id, EstimatedDeliveryDate.all, :id, :name, :prompt => "選択してください"
+              = f.collection_select :estimated_delivery_date_id, EstimatedDeliveryDate.all, :id, :name, prompt: "選択してください"
           .error_message
             = product.errors.full_messages_for(:estimated_delivery_date_id)[0]
 

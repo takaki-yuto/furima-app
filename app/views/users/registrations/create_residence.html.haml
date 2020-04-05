@@ -1,5 +1,5 @@
 .header-contener
-  =link_to "root_path" do
+  =link_to root_path do
     = image_tag "logo/logo.png"
   .Group
     .Group-Bar
@@ -17,4 +17,4 @@
     .registration 登録が完了しました
     .registration-form
       .top-link
-        = link_to("トップページに戻る", root_path, {class: "link-text"})
+        = link_to "トップページに戻る", root_path, class: "link-text"

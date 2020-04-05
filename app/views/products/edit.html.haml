@@ -1,0 +1,7 @@
+.product
+  .product__head
+    .head_icon
+      = link_to root_path do
+        = image_tag "logo/logo.png"
+  .product__form
+    = render "form", { product: @product }
