@@ -32,7 +32,7 @@
           %h2.item-box__name
             = @product.name
           .item-box__body
-            = image_tag @images[0].image,id: "main-image"
+            = image_tag "#{@product.images[0].image}", id: "main-image"
             .img__plural
               - image_count = 1
               - if @images[1]&.image == nil
@@ -40,10 +40,10 @@
               - @images.each do |i|
                 - if image_count != 0
                   - if image_count == 1
-                    = image_tag i.image,class: "sub-image active",id: image_count
+                    = image_tag "#{i.image}",class: "sub-image active",id: image_count
                     - image_count += 1
                   - else
-                    = image_tag i.image,class: "sub-image",id: image_count
+                    = image_tag "#{i.image}",class: "sub-image",id: image_count
                     - image_count += 1
           .item-box__price
             %span
