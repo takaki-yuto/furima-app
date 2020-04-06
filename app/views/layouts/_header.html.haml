@@ -13,7 +13,7 @@
     .nav
       %ul.nav__lists-left
         %li.list-lefts__item.lists-left__item--first
-          = link_to "カテゴリー", id="cat-btn"
+          = link_to "カテゴリー", "/categories/show";
           = link_to "ブランド", id="brand-btn"
       %ul.nav__lists-right
         - if current_user && user_signed_in?

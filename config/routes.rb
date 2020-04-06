@@ -4,7 +4,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root "products#index"
-  resources :products
+  resources :products, only: [:index, :show, :new, :edit, :destroy] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  resources :categories
   resources :users, only: [:show] do
     collection do
       get 'logout'
