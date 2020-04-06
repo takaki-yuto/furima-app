@@ -79,27 +79,27 @@
                   %th
                     商品サイズ
                   %td
-                    = @product.size
+                    = @size.name
                 %tr
                   %th
                     商品の状態
                   %td
-                    = @product.products_status
+                    = @productsStatus.name
                 %tr
                   %th
                     配送料の負担
                   %td
-                    = @product.shipping_charges
+                    = @shippingCharges.name
                 %tr
                   %th
                     発送元の地域
                   %td
-                    =link_to @product.delivery_area
+                    =link_to @shippingMethod.name
                 %tr
                   %th
                     発送日の目安
                   %td
-                    = @product.estimated_delivery_date
+                    = @estimatedDeliveryDate.name
           .optional-area
             %ul
               %li.optional-btn.like-btn

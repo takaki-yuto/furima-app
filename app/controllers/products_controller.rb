@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
 
   def show
     @images = @product.images
+    @size = Size.find @product.size_id
+    @productsStatus = ProductsStatus.find @product.products_status_id
+    @shippingCharges = ShippingCharges.find @product.shipping_charges_id
+    @shippingMethod = ShippingMethod.find @product.shipping_method_id
+    @estimatedDeliveryDate = EstimatedDeliveryDate.find @product.estimated_delivery_date_id
   end
 
   def new
