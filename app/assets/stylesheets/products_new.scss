@@ -262,17 +262,6 @@
             select{
               @include selector-design;
             }
-            svg{
-              bottom: 0;
-              margin-top: 30px;
-              pointer-events: none;
-              position: absolute;
-              right: 16px;
-              top: 0;
-              path{
-                box-sizing: border-box;
-              }
-            }
 
           }
         }
@@ -340,7 +329,6 @@
           width: 100%;
           .status_box{
             display: inline-block;
-            
             width: inherit;
             padding-top: 15px;
             width: 100%;
