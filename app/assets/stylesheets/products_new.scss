@@ -222,46 +222,45 @@
       }
     }
   }
-
-  .details{
-    background-color:  #f5f5f5;
-    width: 100%;
-    .details__wide{
-      height: 100%;
-      -webkit-box-align: center;
-      align-items: center;
-      display: flex;
-      -webkit-box-pack: center;
-      justify-content: center;
-      .details_name__title{
-        padding-left: 40px;
-      }
-      .details_name{
-        width: 700px;
-        padding-top: 40px;
-        background-color: #ffffff;
-        border-bottom: solid;
-        border-width: thin;
-        border-bottom-color: #f5f5f5;
-          .details_name__title{
-            margin-top: 1px;
-            color: #888;
-          }
-          .details_name__exhibition{
-            color: black;
-            padding-top: 25px;
-            .required{
-              font-size: 12px;
-              background-color: #ff0000;
-              color: #ffffff;
-              margin-left: 8px;
-              padding: 0 4px;
-              flex: auto;
-              border-radius: 2px;
-              display: inline-block;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 1.4em;
+    .details{
+      width: 100%;
+      &__wide{
+        height: 100%;
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        .details_name{
+          width: 100%;
+          padding: 40px;
+          background-color: #ffffff;
+          border-bottom: solid;
+          border-width: thin;
+          border-bottom-color: #f5f5f5;
+            .details_name__title{
+              margin-top: 1px;
+              color: #888;
+            }
+            .details_name__exhibition{
+              color: black;
+              padding-top: 25px;
+              .required{
+                @include required-design;
+              }
+            }
+        }
+        .categories{
+          align-items: center;
+          display: inline-flex;
+          width: 100%;
+          .categories_box{
+            display: inline-block;
+            width: inherit;
+            padding-top: 15px;
+            width: 100%;
+            select{
+              @include selector-design;
             }
           }
       }
@@ -312,39 +311,85 @@
             margin-bottom: 40px;
             padding: 0 56px 0 16px;
             width: 615px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: inherit;
           }
         }
+     .size{
+      align-items: center;
+      display: inline-flex;
+      width: 100%;
+      .sizes_box{
+        display: inline-block;
+        width: inherit;
+        padding-top: 15px;
+        width: 100%;
+        select{
+          @include selector-design;            
+        }
       }
-      .size{
-        padding-left: 40px;
-        align-items: center;
-        display: inline-flex;
-        width: 97%;
-        .sizes_box{
-          display: inline-block;
-          position: relative;
-          width: inherit;
-          padding-top: 15px;
-          width: 97%;
-          select{
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            font-size: 16px;
-            height: 48px;
-            line-height: 1;
-            margin: 0;
-            padding: 0 56px 0 16px;
+    }
+    .brand{
+      margin-top: 16px;
+      .any{
+        font-size: 12px;
+        background-color:#808080;
+        color: #ffffff;
+        margin-left: 8px;
+        padding: 0 4px;
+        flex: auto;
+        border-radius: 2px;
+        display: inline-block;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.4em;
+      }
+    }
+    .brand_box{
+      margin-top: 16px;
+      align-items: center;
+      display: inline-flex;
+      width: 100%;
+      input{
+        width: 600px;
+        height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 16px;
+        height: 48px;
+        margin: 0;
+        outline: none;
+        padding: 0 16px;
+        width: inherit;
+      }
+    }
+        .state{
+          color: #000000;
+          padding-top: 25px;
+          .required{
+            @include required-design;
+          }
+        }
+        .status{
+          align-items: center;
+          display: inline-flex;
+          width: 100%;
+          .status_box{
+            display: inline-block;
+            width: inherit;
+            padding-top: 15px;
             width: 100%;
-            option{
-              font-weight: normal;
-              display: block;
-              white-space: pre;
-              min-height: 1.2em;
-              padding: 0px 2px 1px;
-
+            select{
+              @include selector-design;
+            }
+          }
+        }
+       }
+      }
     .delivery{
       width: 100%;
       &__wide{

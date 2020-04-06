@@ -97,7 +97,7 @@
       .product-lists
         - @products.each do |product|
           .product-list
-            = link_to "/products/#{product.id}" do
+            = link_to product_path(product.id) do
               .product-list__img
                 =image_tag "#{product.images[0].image}"
                 -if product.purchase_status != "出品中­"
