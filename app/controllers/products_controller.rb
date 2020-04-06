@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
  
   def get_category_grandchildren
       @category_grandchildren = Category.find("#{params[:child_id]}").children
-　end
+  end
 
   def create
     @product = Product.new(product_params)
