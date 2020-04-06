@@ -2,7 +2,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  #process resize_to_fit: [100, 100]
+  def default_url
+    'board_placeholder.png'
+  end
+  
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?
     storage :file

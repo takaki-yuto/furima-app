@@ -32,7 +32,7 @@
           %h2.item-box__name
             = @product.name
           .item-box__body
-            = image_tag "#{@product.images[0].image}", id: "main-image"
+            = image_tag "#{@images[0].image}",id: "main-image"
             .img__plural
               - image_count = 1
               - if @images[1]&.image == nil
@@ -120,7 +120,7 @@
               = link_to product_path(@product.id), method: :delete,class:"no-underline" do
                 %button.delete-btn{type: "submit"}
                   削除する
-              = link_to "#",class:"no-underline" do
+              = link_to edit_product_path(@product.id),class:"no-underline" do
                 %button.edit-btn{type: "submit"}
                   編集する
         .comment__box
@@ -149,7 +149,7 @@
         =link_to "ベビー・キッズをもっと見る"
         .productlists
 = render 'layouts/footer'
-=link_to "#" do
+=link_to new_product_path do
   .purchaseBtn
     .purchaseBtn__text
       出品する

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show,:destroy]
+  before_action :set_product, except: [:index, :new, :create]
   
   def index
     @products = Product.includes(:images).order("created_at DESC")
@@ -23,6 +23,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
   
   def destroy
     @product.destroy
@@ -35,8 +45,8 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
-                                    :bland_name_id, :selling_price,
-                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id )
+                                    :bland_name, :selling_price,
+                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
   end
 
   def set_product
