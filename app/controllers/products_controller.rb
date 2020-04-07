@@ -20,10 +20,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.new
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
   end
 
   def get_category_children
-    @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   def get_category_grandchildren
@@ -32,6 +34,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    binding.pry
     if @product.save
       redirect_to root_path
     else
@@ -88,7 +91,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
                                     :bland_name, :selling_price,
-                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
+                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id )
   end
 
   def set_card

@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', ()=> {
    let childSelectHtml = `
                       <div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="category">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', ()=> {
    let grandchildSelectHtml = `
                             <div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="category_id">
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="@product[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
@@ -29,10 +29,8 @@ $(document).on('turbolinks:load', ()=> {
                             `;
     $('#children_wrapper').after(grandchildSelectHtml);
   }
-  $('#product_category_id').on('change', function(){
-   let parentCategory = document.getElementById('product_category_id').value;
-   debugger
-
+  $('#product_category').on('change', function(){
+   let parentCategory = document.getElementById('product_category').value;
    if (parentCategory != "---"){ 
       $.ajax({
         url: 'get_category_children',
@@ -41,7 +39,6 @@ $(document).on('turbolinks:load', ()=> {
         dataType: 'json'
       })
       .done(function(children){
-        debugger
         $('#children_wrapper').remove(); 
         $('#grandchildren_wrapper').remove();
        let insertHTML = '';
@@ -58,7 +55,6 @@ $(document).on('turbolinks:load', ()=> {
       $('#grandchildren_wrapper').remove();
     }
   });
-
   $('.listing-product-detail__category').on('change', '#child_category', function(){
    let childId = $('#child_category option:selected').data('category'); 
     if (childId != "---"){ 
