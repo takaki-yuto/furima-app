@@ -271,9 +271,12 @@
           .listing-select-wrapper{
             font-size: 14px;
             padding-top: 20px;
-            .listing-select-wrapper__box{
+            &__box{
               select{
                 @include selector-design;
+              }
+              .listing-select-wrapper__added{
+                margin-top: 10px;
               }
             }
           }
