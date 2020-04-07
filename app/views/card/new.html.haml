@@ -1,12 +1,10 @@
-.product
-  .product__head
-    .head_icon
-      =link_to "root_path" do
-        = image_tag "logo/logo.png"
-  .form-body
-    .field-contener
-      .registration 
-        クレジットカード情報入力
+.header-contener
+  =link_to "root_path" do
+    = image_tag "logo/logo.png"
+.form-body
+  .field-contener
+    .registration
+      クレジットカード情報入力
       = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .product_name
           .product_name__wide
@@ -14,7 +12,7 @@
               .product_name_box__description
                 %b
                   カード番号
-                .required
+                .form-required
                   %b
                     必須
               .product_box__comennt
@@ -37,7 +35,7 @@
               .product_name_box__description
                 %b
                   有効期限
-                .required
+                .form-required
                   %b
                     必須
               .product_box__comennt
@@ -73,7 +71,7 @@
               .product_name_box__description
                 %b
                   セキュリティコード
-                .required
+                .form-required
                   %b
                     必須
               .product_box__comennt
