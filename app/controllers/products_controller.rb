@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_card, only: [:buy, :purchase]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   require 'payjp'
 
@@ -43,8 +44,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id]) 
     @images = @product.images
     @residence = Residence.find_by(user_id: current_user.id)
-    @user = current_user
-    @card = Card.find_by(user_id: current_user.id)
     #Payjpの秘密鍵を取得
     if @card.blank?
       redirect_to controller: "card", action: "new"
@@ -56,8 +55,6 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    @card = Card.find_by(user_id: current_user.id)
-    @product = Product.find(params[:id])
     Payjp.api_key =  ENV["PAYJP_ACCESS_KEY"]
     charge = Payjp::Charge.create(
       amount: @product.selling_price,
@@ -91,7 +88,13 @@ class ProductsController < ApplicationController
                                     :bland_name, :selling_price, :category_id,
                                     images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
   end
+
   def set_product
     @product = Product.find(params[:id]) 
   end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
+
 end
