@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   }
   root "products#index"
   resources :products do
+    member do
+      post 'purchase', to: 'products#purchase'
+      get 'purchased', to: 'products#purchased'
+      get 'buy', to: 'products#buy'
+    end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -17,6 +22,14 @@ Rails.application.routes.draw do
       get 'credit'
     end
   end
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end
+
 
   devise_scope :user do
     get "residences", to: "users/registrations#new_residence"

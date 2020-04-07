@@ -8,7 +8,8 @@
     .credit_area
       .credit_box
         .credit_tag
-          %button.credit_btn{:type => "submit"} <b>クレジットカードを追加する</b>
+          = link_to new_card_path do
+            %button.credit_btn{:type => "submit"} <b>クレジットカードを追加する</b>
     .credit_area_bottom
       = link_to "#" do
         支払い方法について  >

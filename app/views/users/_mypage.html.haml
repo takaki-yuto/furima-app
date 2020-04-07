@@ -88,10 +88,16 @@
                   
           .mypage_nav_list
             .mypage-nav-list-item
-              = link_to credit_users_path do
-                支払い方法
-                %i.icon-arrow-right
-                  
+              - if @card.nil? 
+                = link_to credit_users_path do
+                  支払い方法
+                  %i.icon-arrow-right
+                    ＞
+              - else
+                = link_to card_path do
+                  支払い方法
+                  %i.icon-arrow-right
+                    ＞
           .mypage_nav_list
             .mypage-nav-list-item
               = link_to "#" do
