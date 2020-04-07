@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     if @card.blank?
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = "sk_test_a4d0589cc7b4c72602e62c6a"
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
   def purchase
     @card = Card.find_by(user_id: current_user.id)
     @product = Product.find(params[:id])
-    Payjp.api_key =  "sk_test_a4d0589cc7b4c72602e62c6a"
+    Payjp.api_key =  ENV["PAYJP_ACCESS_KEY"]
     charge = Payjp::Charge.create(
       amount: @product.selling_price,
       customer: Payjp::Customer.retrieve(@card.customer_id),
