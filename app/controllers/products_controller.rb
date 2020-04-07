@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
     if @card.blank?
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:aws][:payjp_secret_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
 
   def purchase
     @product = Product.find(params[:id])
-    Payjp.api_key =  ENV["PAYJP_ACCESS_KEY"]
+    Payjp.api_key =  Rails.application.credentials[:aws][:payjp_secret_key]
     charge = Payjp::Charge.create(
       amount: @product.selling_price,
       customer: Payjp::Customer.retrieve(@card.customer_id),
@@ -93,6 +93,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
+
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
                                     :bland_name, :selling_price, :category_id,
@@ -101,13 +102,11 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+
   end
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
 
-  def set_product
-    @product = Product.find(params[:id]) 
-  end
 end
