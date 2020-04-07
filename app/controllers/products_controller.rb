@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_card, only: [:buy, :purchase]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_card,only: [:buy, :purchase]
+  
   require 'payjp'
 
   def index
@@ -19,11 +20,11 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
- 
+
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
   end
- 
+
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
@@ -41,7 +42,6 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @product = Product.find(params[:id]) 
     @images = @product.images
     @residence = Residence.find_by(user_id: current_user.id)
     #Payjpの秘密鍵を取得
@@ -61,8 +61,7 @@ class ProductsController < ApplicationController
       customer: Payjp::Customer.retrieve(@card.customer_id),
       currency: 'jpy'
     )
-    @product_buyer= Product.find(params[:id])
-    @product_buyer.update(buyer_id: current_user.id, purchase_status: "売り切れ")
+    @product.update(buyer_id: current_user.id, purchase_status: "売り切れ")
     redirect_to purchased_product_path
   end 
 
@@ -89,12 +88,7 @@ class ProductsController < ApplicationController
                                     images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
   end
 
-  def set_product
-    @product = Product.find(params[:id]) 
-  end
-
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
-
 end

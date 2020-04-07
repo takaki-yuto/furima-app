@@ -9,7 +9,7 @@
       .registration__inner
         .buy-item-box
           %h3.buy-item__image
-            = image_tag @product.images[0].image
+            = image_tag "#{@images[0].image}"
           .buy-item__name
             = @product.name
             %p.buy-price
