@@ -101,8 +101,9 @@
 
 .right_contents{
   height: 1100px;
+  padding-left: 550px;
   .right_content{
-    display: flex;
+    position: absolute;
     .right_box{
       padding-top: 40px;
       width: 100%;
@@ -110,7 +111,6 @@
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
       padding-right: 180px;
       .right_menu{
-        float: right;
         width: 700px;
         .right_tab{
           display: block;
