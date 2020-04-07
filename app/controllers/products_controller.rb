@@ -94,4 +94,8 @@ class ProductsController < ApplicationController
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
+
+  def set_product
+    @product = Product.find(params[:id]) 
+  end
 end
