@@ -1,4 +1,4 @@
-document.addEventListener(
+  document.addEventListener(
   "DOMContentLoaded", e => {
     if (document.getElementById("token_submit") != null) { //token_submitというidがnullの場合、下記コードを実行しない
       Payjp.setPublicKey("pk_test_0283c0790ae98a6888a93782"); //ここに公開鍵を直書き

@@ -1,0 +1,71 @@
+.header-contener
+  =link_to "root_path" do
+    = image_tag "logo/logo.png"
+.form-body
+  .field-contener
+    .registration 
+      購入内容の確認
+    .registration__item
+      .registration__inner
+        .buy-item-box
+          %h3.buy-item__image
+            = image_tag @product.images[0].image
+          .buy-item__name
+            = @product.name
+            %p.buy-price
+              %span
+                = "¥" + @product.selling_price
+            %span.item__shipping-fee.bold
+              (税込)送料込み
+    .registration__content
+      .buy-content__inner
+        %form.buy-form
+          %ul.buy-price-table
+            %li.buy-price__row
+              .buy-price__pay.bold
+                支払い金額
+              .buy-price__price
+                %span.data-buy__cell.bold
+                  = "¥" + @product.selling_price
+          .buy-content__inner
+            %h3
+              支払い方法
+            .residences__box
+              -if @card.card_id?
+                = "**** **** **** " + @default_card_information.last4
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+              -else
+                = link_to new_card_path do
+                  %p.buy-info_text
+                    %i.fas.fa-plus-circle
+                    %span.buy-register-text
+                      登録してください
+          .buy-content__inner
+            %h3
+              配送先
+            .residences__box
+              .residences__postal_code
+                = @residence.postal_code
+              .residence__prefectures
+                = @residence.prefectures
+              .residence__municipality
+                = @residence.municipality
+              .residence__address
+                = @residence.address
+                = @residence.apartment
+            = link_to "#" do
+              %p.buy-info_text
+                %i.far.fa-edit
+                %span.buy-register-text
+                  変更したい場合はこちら
+  .registration-form
+    .top-link
+      = form_tag(action: :purchase, method: :post) do
+        .form-body
+          .field-contener
+            .form__upper#card_token
+              = submit_tag "購入する"
+
+

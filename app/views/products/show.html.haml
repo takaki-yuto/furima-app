@@ -45,6 +45,9 @@
                   - else
                     = image_tag i.image,class: "sub-image",id: image_count
                     - image_count += 1
+                  -if @product.buyer_id.present? 
+                    .purchase_status__sold
+                      =image_tag "icon/sold-stamp-3.png"
           .item-box__price
             %span
               = "¥" + @product.selling_price
@@ -110,19 +113,25 @@
                 =link_to "#" do
                   %i.fa.fa-flag
                   不適切な商品の通報
-          - if current_user && user_signed_in? && current_user.id != @product.seller_id 
-            .buy-btn-contener
-              = link_to "#",class:"no-underline" do
+          -if @product.buyer_id.present? 
+            .buy-btn-contener 
+              = link_to root_path, class:"no-underline" do
                 %button.buy-btn{type: "submit"}
-                  購入する
-          - elsif current_user && user_signed_in?
-            .buy-btn-contener
-              = link_to product_path(@product.id), method: :delete,class:"no-underline" do
-                %button.delete-btn{type: "submit"}
-                  削除する
-              = link_to "#",class:"no-underline" do
-                %button.edit-btn{type: "submit"}
-                  編集する
+                  売り切れました
+          -else
+            - if current_user && user_signed_in? && current_user.id != @product.seller_id 
+              .buy-btn-contener
+                = link_to buy_product_path,class:"no-underline" do
+                  %button.buy-btn{type: "submit"}
+                    購入する
+            - elsif current_user && user_signed_in?
+              .buy-btn-contener
+                = link_to product_path(@product.id), method: :delete,class:"no-underline" do
+                  %button.delete-btn{type: "submit"}
+                    削除する
+                = link_to "#",class:"no-underline" do
+                  %button.edit-btn{type: "submit"}
+                    編集する
         .comment__box
           %ul.comment__contents
             %form

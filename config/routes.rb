@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   root "products#index"
-  resources :products
+  resources :products do
+    member do
+      post 'purchase', to: 'products#purchase'
+      get 'purchased', to: 'products#purchased'
+      get 'buy', to: 'products#buy'
+    end
+  end
   resources :users, only: [:show] do
     collection do
       get 'logout'
@@ -20,6 +26,7 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+
 
   devise_scope :user do
     get "residences", :to => "users/registrations#new_residence"

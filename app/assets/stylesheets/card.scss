@@ -1,3 +1,49 @@
-// Place all the styles related to the card controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sigup__card-list{
+  display: flex;
+  margin: 8px 0 0 40px;
+  font-size: 0;
+  img{
+    margin-right: 5px;
+    vertical-align: middle;
+    height: 20px;
+  }
+}
+.credit_box{
+  button{
+  color: #ffff;
+  border: 1px solid red;
+  background-color: red;
+  width:100px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 4px;
+  }
+}
+
+#exp_year, #exp_month{
+  border: 1px solid #ccc;
+  background-color: #ffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+  height: 48px;
+  margin: 0 5px 0 20px;
+  outline: none;
+  padding: 0 16px;
+}
+.form__upper{
+  text-align: center;
+  padding: 32px;
+  font-size: 15px;
+  font-weight: bold;
+  input{
+    color: #ffff;
+    border: 1px solid red;
+    background-color: red;
+    width:600px;
+    height: 48px;
+    font-size: 16px;
+  }
+}
