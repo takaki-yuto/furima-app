@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
     @shippingCharges = ShippingCharges.find @product.shipping_charges_id
     @shippingMethod = ShippingMethod.find @product.shipping_method_id
     @estimatedDeliveryDate = EstimatedDeliveryDate.find @product.estimated_delivery_date_id
+    @category = @product.category
   end
 
   def new
@@ -57,7 +58,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
-                                    :bland_name, :selling_price, :category_id,
+                                    :bland_name, :selling_price,
                                     images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
   end
 
