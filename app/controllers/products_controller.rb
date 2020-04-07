@@ -20,12 +20,13 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.new
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
   end
 
   def get_category_children
-    @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
-
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
@@ -40,7 +41,26 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    grandchild_category = @product.category
+    child_category = grandchild_category.parent
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
+    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
   end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+
 
   def buy
     @product = Product.find(params[:id])
@@ -68,18 +88,6 @@ class ProductsController < ApplicationController
     redirect_to purchased_product_path
   end 
 
-  def update
-    if @product.update(product_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
-  
-  def destroy
-    @product.destroy
-    redirect_to root_path
-  end
 
 
   private
@@ -87,8 +95,12 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
-                                    :bland_name, :selling_price,
-                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
+                                    :bland_name, :selling_price, :category_id,
+                                    images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id )
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
   def set_card

@@ -129,7 +129,7 @@
                 = link_to product_path(@product.id), method: :delete,class:"no-underline" do
                   %button.delete-btn{type: "submit"}
                     削除する
-                = link_to "#",class:"no-underline" do
+                = link_to edit_product_path(@product.id),class:"no-underline" do
                   %button.edit-btn{type: "submit"}
                     編集する
         .comment__box

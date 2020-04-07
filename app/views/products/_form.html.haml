@@ -69,7 +69,10 @@
             %span.listing-default--require 必須
             .listing-select-wrapper
               .listing-select-wrapper__box
-                = f.collection_select :category_id, Category.where(ancestry: nil),  :id, :name, prompt: "---"
+                = f.select :category, Category.where(ancestry: nil).pluck(:name),{prompt: "---"}, {class: 'product-details__categories-input--select', id: 'parent_category'}
+            .error_message
+              = product.errors.full_messages_for(:category_id)[0]
+
         .state
           %b サイズ
           .required
@@ -84,9 +87,9 @@
           .any
             %b 任意
         .brand_box
-          =  f.text_field :brand_name
+          =  f.text_field :bland_name
         .error_message
-          = product.errors.full_messages_for(:brand_name)[0]
+          = product.errors.full_messages_for(:bland_name)[0]
         .state
           %b 商品の状態
           .required
