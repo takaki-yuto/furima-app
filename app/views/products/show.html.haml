@@ -32,7 +32,7 @@
           %h2.item-box__name
             = @product.name
           .item-box__body
-            = image_tag @images[0].image,id: "main-image"
+            = image_tag "#{@images[0].image}",id: "main-image"
             .img__plural
               - image_count = 1
               - if @images[1]&.image == nil
@@ -40,10 +40,10 @@
               - @images.each do |i|
                 - if image_count != 0
                   - if image_count == 1
-                    = image_tag i.image,class: "sub-image active",id: image_count
+                    = image_tag "#{i.image}",class: "sub-image active",id: image_count
                     - image_count += 1
                   - else
-                    = image_tag i.image,class: "sub-image",id: image_count
+                    = image_tag "#{i.image}",class: "sub-image",id: image_count
                     - image_count += 1
                   -if @product.buyer_id.present? 
                     .purchase_status__sold
@@ -82,27 +82,27 @@
                   %th
                     商品サイズ
                   %td
-                    = @product.size
+                    = @size.name
                 %tr
                   %th
                     商品の状態
                   %td
-                    = @product.products_status
+                    = @productsStatus.name
                 %tr
                   %th
                     配送料の負担
                   %td
-                    = @product.shipping_charges
+                    = @shippingCharges.name
                 %tr
                   %th
                     発送元の地域
                   %td
-                    =link_to @product.delivery_area
+                    =link_to @shippingMethod.name
                 %tr
                   %th
                     発送日の目安
                   %td
-                    = @product.estimated_delivery_date
+                    = @estimatedDeliveryDate.name
           .optional-area
             %ul
               %li.optional-btn.like-btn
@@ -158,7 +158,7 @@
         =link_to "ベビー・キッズをもっと見る"
         .productlists
 = render 'layouts/footer'
-=link_to "#" do
+=link_to new_product_path do
   .purchaseBtn
     .purchaseBtn__text
       出品する
