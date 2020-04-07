@@ -42,6 +42,7 @@ class ProductsController < ApplicationController
   end
 
   def buy
+    @product = Product.find(params[:id])
     @images = @product.images
     @residence = Residence.find_by(user_id: current_user.id)
     #Payjpの秘密鍵を取得
@@ -55,6 +56,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    @product = Product.find(params[:id])
     Payjp.api_key =  ENV["PAYJP_ACCESS_KEY"]
     charge = Payjp::Charge.create(
       amount: @product.selling_price,
