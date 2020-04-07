@@ -12,8 +12,9 @@ class Product < ApplicationRecord
   belongs_to :category
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :name, :size_id, :products_status_id, :shipping_charges_id, :shipping_method_id,
+  validates  :size_id, :products_status_id, :shipping_charges_id, :shipping_method_id,
              :delivery_area_id, :estimated_delivery_date_id,                      presence: true
+  validates :name, length: { in: 1..40 }
   validates :text, length: { in: 1..1000 }
   validates :selling_price, numericality: {  greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   validates :images, presence: true

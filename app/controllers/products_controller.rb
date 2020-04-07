@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
     @products = Product.includes(:images).order("created_at DESC")
@@ -7,20 +7,23 @@ class ProductsController < ApplicationController
 
   def show
     @images = @product.images
+    @size = Size.find @product.size_id
+    @productsStatus = ProductsStatus.find @product.products_status_id
+    @shippingCharges = ShippingCharges.find @product.shipping_charges_id
+    @shippingMethod = ShippingMethod.find @product.shipping_method_id
+    @estimatedDeliveryDate = EstimatedDeliveryDate.find @product.estimated_delivery_date_id
   end
 
   def new
     @product = Product.new
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-    @category_parent_array.unshift('---')
   end
  
   def get_category_children
-      @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
   end
  
   def get_category_grandchildren
-      @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def create
@@ -30,7 +33,6 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit
@@ -55,7 +57,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :text, :size_id, :products_status_id, :shipping_charges_id, 
                                     :shipping_method_id, :delivery_area_id, :estimated_delivery_date_id, 
-                                    :bland_name, :selling_price,
+                                    :bland_name, :selling_price, :category_id,
                                     images_attributes: [:id, :image, :_destroy ]).merge(seller_id: current_user.id)
   end
 

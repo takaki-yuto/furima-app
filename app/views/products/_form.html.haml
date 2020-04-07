@@ -62,65 +62,14 @@
     .details__wide
       .details_name
         .details_name__title
-          %b 商品の詳細
-          .details_name__exhibition
-            %b カテゴリー
-            .required
-              %b 必須
+          <b>商品の詳細</b>
         .categories
-          .categories_box
-            %select{:name => "categoryId"}
-              %option{"aria-selected" => "true", :label => "選択してください", :selected => "", :value => ""} 選択してください
-              %option{"aria-selected" => "false", :label => "レディース", :value => "1"} レディース
-              %option{"aria-selected" => "false", :label => "メンズ", :value => "2"} メンズ
-              %option{"aria-selected" => "false", :label => "ベビー・キッズ", :value => "3"} ベビー・キッズ
-              %option{"aria-selected" => "false", :label => "インテリア・住まい・小物", :value => "4"} インテリア・住まい・小物
-              %option{"aria-selected" => "false", :label => "本・音楽・ゲーム", :value => "5"} 本・音楽・ゲーム
-              %option{"aria-selected" => "false", :label => "おもちゃ・ホビー・グッズ", :value => "1328"} おもちゃ・ホビー・グッズ
-              %option{"aria-selected" => "false", :label => "コスメ・香水・美容", :value => "6"} コスメ・香水・美容
-              %option{"aria-selected" => "false", :label => "家電・スマホ・カメラ", :value => "7"} 家電・スマホ・カメラ
-              %option{"aria-selected" => "false", :label => "スポーツ・レジャー", :value => "8"} スポーツ・レジャー
-              %option{"aria-selected" => "false", :label => "ハンドメイド", :value => "9"} ハンドメイド
-              %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
-              %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
-              %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-
-        .categories
-          .categories_box
-            %select{:name => "categoryId"}
-              %option{"aria-selected" => "true", :label => "選択してください", :selected => "", :value => ""} 選択してください
-              %option{"aria-selected" => "false", :label => "レディース", :value => "1"} レディース
-              %option{"aria-selected" => "false", :label => "メンズ", :value => "2"} メンズ
-              %option{"aria-selected" => "false", :label => "ベビー・キッズ", :value => "3"} ベビー・キッズ
-              %option{"aria-selected" => "false", :label => "インテリア・住まい・小物", :value => "4"} インテリア・住まい・小物
-              %option{"aria-selected" => "false", :label => "本・音楽・ゲーム", :value => "5"} 本・音楽・ゲーム
-              %option{"aria-selected" => "false", :label => "おもちゃ・ホビー・グッズ", :value => "1328"} おもちゃ・ホビー・グッズ
-              %option{"aria-selected" => "false", :label => "コスメ・香水・美容", :value => "6"} コスメ・香水・美容
-              %option{"aria-selected" => "false", :label => "家電・スマホ・カメラ", :value => "7"} 家電・スマホ・カメラ
-              %option{"aria-selected" => "false", :label => "スポーツ・レジャー", :value => "8"} スポーツ・レジャー
-              %option{"aria-selected" => "false", :label => "ハンドメイド", :value => "9"} ハンドメイド
-              %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
-              %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
-              %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-
-        .categories
-          .categories_box
-            %select{:name => "categoryId"}
-              %option{"aria-selected" => "true", :label => "選択してください", :selected => "", :value => ""} 選択してください
-              %option{"aria-selected" => "false", :label => "レディース", :value => "1"} レディース
-              %option{"aria-selected" => "false", :label => "メンズ", :value => "2"} メンズ
-              %option{"aria-selected" => "false", :label => "ベビー・キッズ", :value => "3"} ベビー・キッズ
-              %option{"aria-selected" => "false", :label => "インテリア・住まい・小物", :value => "4"} インテリア・住まい・小物
-              %option{"aria-selected" => "false", :label => "本・音楽・ゲーム", :value => "5"} 本・音楽・ゲーム
-              %option{"aria-selected" => "false", :label => "おもちゃ・ホビー・グッズ", :value => "1328"} おもちゃ・ホビー・グッズ
-              %option{"aria-selected" => "false", :label => "コスメ・香水・美容", :value => "6"} コスメ・香水・美容
-              %option{"aria-selected" => "false", :label => "家電・スマホ・カメラ", :value => "7"} 家電・スマホ・カメラ
-              %option{"aria-selected" => "false", :label => "スポーツ・レジャー", :value => "8"} スポーツ・レジャー
-              %option{"aria-selected" => "false", :label => "ハンドメイド", :value => "9"} ハンドメイド
-              %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
-              %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
-              %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-
+          .listing-product-detail__category
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.listing-default--require 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = f.collection_select :category_id, Category.where(ancestry: nil),  :id, :name, prompt: "---"
         .state
           %b サイズ
           .required
