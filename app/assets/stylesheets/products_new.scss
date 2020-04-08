@@ -259,6 +259,7 @@
             font-size: 14px;
             padding-top: 20px;
             &__box{
+              margin-top: 10px;
               select{
                 @include selector-design;
               }
