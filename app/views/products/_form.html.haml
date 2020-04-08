@@ -3,9 +3,9 @@
     .product_box
       .product_box__img
         .product_box__img--exhibition
-          %b 出品画像
+          出品画像
           .required
-            %b 必須
+            必須
         .product_box__img--comment
           最大10枚までアップロードできます
         #image-box
@@ -43,16 +43,16 @@
     .product_name__wide
       .product_name_box
         .product_name_box__exhibition
-          %b 商品名
+          商品名
           .required
-            %b 必須
+            必須
         = f.text_field :name, placeholder: "40文字まで", class:"product_name_box__comment"
         .error_message
           = product.errors.full_messages_for(:name)[0]
         .product_name_box__description
-          %b 商品の説明
+          商品の説明
           .required
-            %b 必須
+            必須
         = f.text_area :text, class:"product_name_box__text_form", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n"
         .error_message
           = product.errors.full_messages_for(:text)[0]
@@ -66,7 +66,7 @@
         .categories
           .listing-product-detail__category
             = f.label 'カテゴリー', class: 'listing-default__label'
-            %span.listing-default--require 必須
+            %span.required 必須
             .listing-select-wrapper
               .listing-select-wrapper__box
                 = f.select :category, Category.where(ancestry: nil).pluck(:name),{prompt: "---"}, {class: 'product-details__categories-input--select', id: 'parent_category'}
@@ -74,26 +74,26 @@
               = product.errors.full_messages_for(:category_id)[0]
 
         .state
-          %b サイズ
+          サイズ
           .required
-            %b 必須
+            必須
         .size
           .sizes_box
             = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください"
         .error_message
           = product.errors.full_messages_for(:size_id)[0]
         .brand
-          %b ブランド
+          ブランド
           .any
-            %b 任意
+            任意
         .brand_box
           =  f.text_field :bland_name
         .error_message
           = product.errors.full_messages_for(:bland_name)[0]
         .state
-          %b 商品の状態
+          商品の状態
           .required
-            %b 必須
+            必須
         .status
           .status_box
             = f.collection_select :products_status_id, ProductsStatus.all, :id, :name, prompt: "選択してください"
@@ -104,11 +104,11 @@
     .delivery__wide
       .delivery_name
         .delivery_name__title
-          %b 配送について
+          配送について
           .delivery_name__exhibition
-            %b 配送料の負担
+            配送料の負担
             .required
-              %b 必須
+              必須
           .delivery_charge
             .delivery_charge__box
               = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, prompt: "選択してください"
@@ -117,9 +117,9 @@
 
           #delivery_hidden
             .delivery_method__exhibition
-              %b 配送料の方法
+              配送料の方法
               .required
-                %b 必須
+                必須
             .delivery_method
               .delivery_method__box
                 = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, prompt: "選択してください"
@@ -127,9 +127,9 @@
               = product.errors.full_messages_for(:shipping_method_id)[0]
 
           .delivery_area__exhibition
-            %b 発送元の地域
+            発送元の地域
             .required
-              %b 必須
+              必須
           .delivery_areas
             .delivery_areas__box
               = f.collection_select :delivery_area_id, DeliveryArea.all, :id, :name, prompt: "選択してください"
@@ -137,9 +137,9 @@
             = product.errors.full_messages_for(:delivery_area_id)[0]
          
           .delivery_date__exhibition
-            %b 配送までの日数
+            配送までの日数
             .required
-              %b 必須
+              必須
           .delivery_date
             .delivery_date__box
               = f.collection_select :estimated_delivery_date_id, EstimatedDeliveryDate.all, :id, :name, prompt: "選択してください"
@@ -150,12 +150,11 @@
     .value__wide
       .value_name
         .value_name__title
-          %b 価格 (¥300~9,999,999)
+          価格 (¥300~9,999,999)
         .value_name__box
           .selling_price
-            %b 販売価格
-            .required
-              %b 必須
+            販売価格
+            .required 必須
           .price_input_form
             .mark
               ¥
@@ -176,7 +175,7 @@
         = f.submit "出品する", class:"exhibition", id:"submit"
         .draft
           %button{:tabindex => "0", :type => "button"} 
-            %b 下書きに保存
+            下書きに保存
         .back
           = link_to('もどる', {:href => "/jp/"})
         .prohibited
