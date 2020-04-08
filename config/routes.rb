@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       post 'purchase', to: 'products#purchase'
       get 'purchased', to: 'products#purchased'
       get 'buy', to: 'products#buy'
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     collection do
       get 'get_category_children', defaults: { format: 'json' }

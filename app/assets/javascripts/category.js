@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', ()=> {
    let childSelectHtml = `
                       <div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="child_category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="child_id">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -31,8 +31,8 @@ $(document).on('turbolinks:load', ()=> {
   }
 
   $('#parent_category').on('change', function(){
-   let parentCategory = document.getElementById('parent_category').value;
-   if (parentCategory != "---"){ 
+   let parentCategory = $('#parent_category').val();
+   if (parentCategory != false){ 
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.listing-product-detail__category').on('change', '#child_category', function(){
    let childId = $('#child_category option:selected').data('category'); 
-    if (childId != "---"){ 
+    if (childId !=  false){ 
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
