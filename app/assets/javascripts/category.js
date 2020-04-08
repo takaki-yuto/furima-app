@@ -1,13 +1,13 @@
 $(document).on('turbolinks:load', ()=> {
   function appendOption(category){
-   let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+   let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   function appendChidrenBox(insertHTML){
    let childSelectHtml = `
                       <div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="child_category_id">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', ()=> {
    let grandchildSelectHtml = `
                             <div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="category_id">
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="product[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
@@ -29,10 +29,9 @@ $(document).on('turbolinks:load', ()=> {
                             `;
     $('#children_wrapper').after(grandchildSelectHtml);
   }
-  $('#product_category_id').on('change', function(){
-   let parentCategory = document.getElementById('product_category_id').value;
-   debugger
 
+  $('#parent_category').on('change', function(){
+   let parentCategory = document.getElementById('parent_category').value;
    if (parentCategory != "---"){ 
       $.ajax({
         url: 'get_category_children',
@@ -41,7 +40,6 @@ $(document).on('turbolinks:load', ()=> {
         dataType: 'json'
       })
       .done(function(children){
-        debugger
         $('#children_wrapper').remove(); 
         $('#grandchildren_wrapper').remove();
        let insertHTML = '';
