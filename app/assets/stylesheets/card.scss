@@ -1,7 +1,7 @@
 
 .sigup__card-list{
   display: flex;
-  margin: 8px 0 0 40px;
+  margin: 8px 0 0 140px;
   font-size: 0;
   img{
     margin-right: 5px;
@@ -45,5 +45,33 @@
     width:600px;
     height: 48px;
     font-size: 16px;
+  }
+}
+.cvc, #card_number{
+  width: 400px;
+  border: 1px solid #ccc;
+  background-color: #ffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+  height: 48px;
+  outline: none;
+  padding: 0 16px;
+}
+
+.product_name_box__description{
+  margin: 15px 0 0 130px;
+  display: flex;
+  .form-required{
+    height: 25px;
+    width: 50px;
+    margin: 5px 0 0 8px;
+    padding: 4px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    background: #ea352d;
   }
 }
