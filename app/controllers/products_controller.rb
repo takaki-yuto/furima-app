@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @size = Size.find @product.size_id
     @productsStatus = ProductsStatus.find @product.products_status_id
     @shippingCharges = ShippingCharges.find @product.shipping_charges_id
-    @shippingMethod = ShippingMethod.find @product.shipping_method_id
+    @deliveryArea = DeliveryArea.find @product.delivery_area_id
     @estimatedDeliveryDate = EstimatedDeliveryDate.find @product.estimated_delivery_date_id
     @category = @product.category
   end
