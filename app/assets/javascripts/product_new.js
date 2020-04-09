@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', ()=> {
                   <i class="fas fa-camera product_icon"></i>
                   <input class="js-file" type="file" 
                   name="product[images_attributes][${index}][image]"
-                  name="picture_upload" 
                   id="product_images_attributes_${index}_image">
                   <br>
                   <div class="boxsize__message">
@@ -33,11 +32,12 @@ $(document).on('turbolinks:load', ()=> {
   let countNotSavedUploader = $("not_saved_uploader").length;
   let countTotalUploader =  $(".img_upload_container").length;
   let lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex);
-  $('.hidden_destroy').hide();
+
   $(".not_saved_picture:first").remove();
   let countSavedPicture = $(".saved_picture").length;
   let countTotalPicture = $(".picture_preview").length;
+  fileIndex.splice(0, lastIndex);
+  $('.hidden_destroy').hide();
   // ============================================================
   if (countSavedPicture == 0) {
     $(".not_saved_picture").remove();
@@ -101,7 +101,7 @@ $(document).on('turbolinks:load', ()=> {
     let hiddenCheck = $(`input[data-index="${targetIndex}"]`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
+    $(`div[data-index="${targetIndex}"]`).remove();
     
     if ($('.js-file').length == 0) $('.img_upload_container:first').before(buildFileField(fileIndex[0]));
     let countPicture = $(".picture_preview").length;
