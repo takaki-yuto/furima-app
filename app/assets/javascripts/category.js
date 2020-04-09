@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', ()=> {
                       <div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
                           <select class="listing-select-wrapper__box--select" id="child_category" name="child_id">
-                            <option value="---" data-category="---">---</option>
+                            <option  data-category="---"></option>
                             ${insertHTML}
                           <select>
                         </div>
@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', ()=> {
                             <div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="product[category_id]">
-                                  <option value="---" data-category="---">---</option>
+                                  <option  data-category="---"></option>
                                   ${insertHTML}
                                 </select>
                               </div>
@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.listing-product-detail__category').on('change', '#child_category', function(){
    let childId = $('#child_category option:selected').data('category'); 
-    if (childId !=  false){ 
+    if (childId !=  "---"){ 
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',

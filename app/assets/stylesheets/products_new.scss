@@ -1,6 +1,9 @@
 .js-file{
   display: none;
 }
+.alert{
+  color: #ff0000;
+}
 
 @mixin selector-design{
   -webkit-appearance: none;
