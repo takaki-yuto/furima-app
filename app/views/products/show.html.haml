@@ -45,9 +45,6 @@
                   - else
                     = image_tag "#{i.image}",class: "sub-image",id: image_count
                     - image_count += 1
-                  -if @product.buyer_id.present? 
-                    .purchase_status__sold
-                      =image_tag "icon/sold-stamp-3.png"
           .item-box__price
             %span
               = "¥" + @product.selling_price
