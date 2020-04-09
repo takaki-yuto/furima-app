@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @size = Size.find @product.size_id
     @productsStatus = ProductsStatus.find @product.products_status_id
     @shippingCharges = ShippingCharges.find @product.shipping_charges_id
-    @deliveryArea = DeliveryArea.find @product.delivery_area_id
+    @shippingMethod = ShippingMethod.find @product.shipping_method_id
     @estimatedDeliveryDate = EstimatedDeliveryDate.find @product.estimated_delivery_date_id
     @category = @product.category
   end
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      render :new
+      redirect_back(fallback_location: root_path) 
     end
   end
 
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to root_path
     else
-      render :edit
+      redirect_back(fallback_location: root_path)
     end
   end
   

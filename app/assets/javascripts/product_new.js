@@ -14,7 +14,8 @@ $(document).on('turbolinks:load', ()=> {
                 <div class="js-file_group" data-index="${index}">
                   <i class="fas fa-camera product_icon"></i>
                   <input class="js-file" type="file" 
-                  name="product[images_attributes][${index}][image]" 
+                  name="product[images_attributes][${index}][image]"
+                  name="picture_upload" 
                   id="product_images_attributes_${index}_image">
                   <br>
                   <div class="boxsize__message">
@@ -150,3 +151,4 @@ $(document).on('turbolinks:load', ()=> {
     };
   });
 });
+

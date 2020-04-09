@@ -4,7 +4,7 @@
       = link_to root_path do
         = image_tag "logo/logo.png"
   .product__form
-    = form_with model: @product, class:"product_form", local: true do |f|
+    = form_with model: @product, class:"product_form", id:"product_form",local: true do |f|
       .product_out
         .product_box
           .product_box__img
@@ -97,8 +97,6 @@
                 任意
             .brand_box
               =  f.text_field :bland_name
-            .error_message
-              = @product.errors.full_messages_for(:bland_name)[0]
             .state
               商品の状態
               .required
@@ -126,7 +124,7 @@
 
               #delivery_hidden
                 .delivery_method__exhibition
-                  配送料の方法
+                  配送の方法
                   .required
                     必須
                 .delivery_method
