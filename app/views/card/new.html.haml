@@ -5,7 +5,7 @@
   .field-contener
     .registration
       クレジットカード情報入力
-      = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+      = form_tag(pay_card_index_path, method: :post, local:true, id: 'charge-form',  name: "inputForm") do
         .product_name
           .product_name__wide
             .product_name_box__img
